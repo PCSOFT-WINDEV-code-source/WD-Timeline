@@ -1,0 +1,287 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : MDLC_TIMELINE_DOUBLE
+ major_version : 28
+ minor_version : 0
+ type : 20
+ description : ""
+ subtype : 0
+window :
+ name : MDLC_TIMELINE_DOUBLE
+ identifier : 0x2b1d0925e0c5348d
+ internal_properties : CAAAAAgAAACJq/1UuKeBu9Z92r//ioH7SJ/EDur3fItBGpxIVWWSaLskxzMe9MyOm8GtqyUt4BPsc+KB4xKUmnUS7AY8GhtEhNIzE07r/sJuxxK81andLES/8JYKdLORhFyc4t5qzrHTnAEmcKrLvSsQIo5/9YqId2OH8izB5yhycXeraTzMoilbrsou/BDt0F3/hChVzbozGc5YyPqJuylzxYa0sXof9n7n4SV2+sGxXNDSC0OIIsCRFdFsw+ycKdG1co30QCpJ2gnZchhiR2waJyAaxuJF9sFH1Vu6ybbmriClaEQgbbnO3YWHEVqnjw2gjS8BoYwC8PFE+2vbFtWufOG+EiVj9sGJPu3BH7otmGuFR+PVYebqfYVc7SV4wDF5tMhBE+NFOy0qFGU1kPRtsm5zdJATtsBJZORUzrrr+gzmrvGdSTZFP5rOo6+0UNLFG2Cj19NzT2DSpiSsAaxacHPOHiK9I+F3czjQyG8bwFrYBsQDtxcm6ujTqABIGrLjM0OBgLgnVbd5osZCB3vd+7BnIZ0D7QlbBSPukzZKXDQ/Ya+fnVe1vQAWfdVOFwMnm4dPW3ZKDqISR+JmmaGz21Nk9oKIzvrK3uORHXEYaqiFy+1YyvIWtWtdRdfI8/RSYXV5ztXLCYs6i4fNTou5B+QqC6AlChtw+0MpCAgLGPRV6NVPNVcdRVVSr/crTrug2/Vbyu44Tuw311aW/ppp3PqGbCDq8pyEBCxY+Prqdl5dUSBl/xGAcVrsFK5FkOnUOb2kc2KIFSJ1MXljrmWXvnVi8RpupdLMFtBNEyw2IX6eryPo+JyY
+ properties :
+  width : 100
+  height : 200
+ controls :
+  -
+    name : MDLC_TIMELINE_DOUBLE
+    identifier : 0x2b1d0925e0c7348d
+    internal_properties : CAAAAAgAAADsWUpzsF5P5S4lvJE67Fq+ANY1yQYe8yaGYZNOoP19fmUlk37pykR0JLkcdkYUC5WxYNUsGaDeh4Z9H5HLLi983KCzFhN3WPe+ZgfONdlmE/9rJ3+UGadvC5lGY9FLAdvH7IJwRa5NBBU1UX4KQBgp91TjvWcgy2AGl+NtmqR7MfV6Nr7Fw8dK6RbXEwjLWVfyUGuICE9Nkix1LVOKzzZ5RjIXdD0Of23c9f+DlVAOcwlZf1IIaZtWVPJ+rCcSZDakYzFGGC8tiEj9GOjX5tuiEQNoerWKrIZtWX8CvO1DRhrqhZFGzVT6VHVqz5ybOw5ty+5SHUBmn5YP4CqZHlOYES6BP+krwU9jVhfKddKkwWd+qwWodMO3LhhNiiF8Lw4WiUhhYDskWeuDFdN9snLBZpbqb0vr8/0enXEfbER9FWYEWoNQVAF6KW8RYw3iGcdbfhenztuGVxjmJ789TwfYNt+p/bhRll9G/g==
+    properties :
+     width : 100
+     height : 200
+    controls :
+     -
+       name : IMG_TIMELINE_SYNCHRONISEE
+       identifier : 0x2b1d09a2e7841fb6
+       internal_properties : CAAAAAgAAAAdjSuZ9BdiaieX/arbzZiJiSLcZJg+Im8i8WyDUCYvX4UaK7fKc2TToU3KF+3ZLJdFvknFlFoOi7A2WlgFg+e5mGMqhCnsJwuSOo0tseRMoYhyi2WuwbHu7HfCmesWj3sraXIi7iZe0O/qNf5Q3T9g7Dkg0Pzx5SVDcLee3cVBIdcZBdOGQSjGL3u+Gg9Jd2wxnbPzqTZ2QbS3InEqUTGfypQ0MAAYWUV9HIOCnS/HFp3Y/Xt7yrw8/lCz0mIroNrHoK54AUWfOWL1QXuPZ0vkeaAiX7AAf0i8yRVegDru+OWVifusEJ28jb2QfF8bLGmTYL9NXPtVMLPBQQXiP4/XyUrvD4awdpW+puQZWGabv/GGo6dopAmdBm/v84fHYtaDrmUr7/WmeyWlyPjenN3J0zB3NwrEaTCEFGUIWgyo0ejij5lS2JJ64iRrsaYKVq1qxU8qRqD0Y/Dl+KZ2+Vu/xhtj8sEhsWvspSJzWQ0NSRVVNnB5QYY=
+       properties :
+        width : 100
+        height : 136
+       type : 8
+       code_elements :
+        type_code : 8
+        p_codes : []
+     -
+       name : CMOD_TIMELINE
+       identifier : 0x2b1d09feecae85c8
+       internal_properties : CAAAAAgAAAA+LVJj/cwq7JXS3FpK6GfftmNsUxecijbTLeo7UwqYHveNV333LphDSUw03DKN5QDKJupzO4LzZB7zU0XK/3f+mlYtymhvTxNg5j/DXodnjla6T6cuegjpBIdc/bHPz2PodJolrqlL97SzIljEScepe9AD0vqQhAr5Sov1Y9XQLayVBPC7teSbQtUtSmq80xlgvi1up6C0Mmi8QY3GMINurzzgtpfwU2TjI6QH2tGch544btZ3AZQdksCwkMOIfdOLuDrWUl/lvaTJL8x3X6TdlP+sorQouClNJwHXO5aHY6Iq6uRHFK+UyLTTCMBd1Dht/Llq+Kh1CLoKjR0Km6c/v/N76QlxLIMNe3LiVo7Wlbazp4VxIClWTR1AIk4SkYNu2Q2Xeiachw7cO1oi7aoKyaG1RhzID/h2ypIZn9HWXHknMdoSJnIOpkcaA6tcIjac8Y2AptqVV4V9w0NoMpgJMaoaNYtdPQcN+XTeMpir6JGE5n2qazNHO+jx7LuyvzLqLVx0plxle5rC3RZb+Wvvh418QGQlnIxJtDupshY0xKrUzOMKITYBLr1WSTPnDd4xGwXOsC9ZKXl9AeNmJpfvbvpu3ISV2T96i7DMqrcyrB3kiWmr2o820kufJHqP2lkFDKBczd3CzsroxXESw3oJLHW9029ETkiFZJo5OXsNHzd8lDZBzeCZ4L42pc8dAX3M1DBcULXwYxg7wI5yM1CRIqgpuXdMTVC+q7fgn/a7r2wIqWSjWEpX/PDGLShIwTN2hV9Yd7gVtDwfTYD6gPLpDcDw7la311MnV27YNP5ch9GneMWEoMlKiw1aKiDWynjpNb2QxthkhRtLvqMJW5EJ0dw+CgkCJX6VMtrx
+       properties :
+        y : 135
+        width : 100
+        height : 65
+       controls :
+        -
+          name : IMG_TIMELINE
+          identifier : 0x2b1d09feecb885d8
+          internal_properties : CAAAAAgAAAAk41DR1j0vkJcCWAu68q093mT4ZToAK8/ZgylEnYzVPN0W2PNpcZlRg3ykJ48yww4w6nUPjNphEaVys4gbeojxW4QrfDRNwYhMfuIKdVuD2fnbLYDHxx/5V6Ni0KH65aaJHaPaAqvA1lFgBcG9GeT40BFTL0J2hVP1y6sCnBdh9844ssxgTef8gISnHGsvO1dLTzFBUZNPUKL7aZCGEgJLzxAluZ3ybph8wQYtFq9HS1QlnQRGNXo1xoX6f7IWMcZsNpT3sLGnRb3OKrvcgHK5ktRFXNDU9Ei0quJ1Fa77UzCHl2JMe6bHLmf05p+QTZHPoLMWmZV+lEXBdk7B9Pxbq99beI6Xqr1ohqIbQwkps58R++r2dPzlwqvIqo99+DKnTp1h6YA/2v+8U8rlp4v0efZvYWV/xBZG++rzMbnb20wqvX9PXxhG5PtFnMTjF++TIcdCfAC8QBOS0M98TGJaMTzUt4Ao4YN4t4/KPCzre+vubED/so8JxeBbpLZvxNruup+1+GT0JwW7y92DZ+oieMsMde2KJRmh0HkDOXUxxu0C536ZWaOvLKKtv3NfRFkEgw4cXJ3+fXstCVGJw0nartQ+nEuAUjBkrXwl48H/IyhGENEhkgvdafqD2PTgj9mhKACXfuo3Q0gdDJURE4kgExGk/8hVLIy1tTtEiQXBINzIJ9w=
+          properties :
+           width : 100
+           height : 65
+          type : 8
+          code_elements :
+           internal_properties : CAAAAAgAAADtf25dPIqpv68bETGtO/lIs4oyGSBN7HHeH/9zM4xkzSda8RSDtLT33oAcX43sh+LElX+IHMDV2H0wTXYH1WthqRsRA8ourwyVQteg/hOdvz+dgAqGhlUUCFixKg==
+           type_code : 8
+           p_codes :
+            -
+              code : |1-
+               //Exécute le traitement défini dans le modèle
+               ExécuteAncêtre
+              type : 14
+            -
+              code : |1-
+               //Exécute le traitement défini dans le modèle
+               ExécuteAncêtre
+              type : 18
+           templates :
+            -
+              name : IMG_TIMELINE
+              identifier : 0x1543d71a026657d7
+              code_elements :
+               internal_properties : CAAAAAgAAADdTz4tzLq5r58L4aE9KwlYo9pCKbD9fOFOj0/jg7y0nRdqwSSTpITnzqDcH01s91J0JW+YDNDl6E1AXWY3hTuxGYuBkzq+P5xlkqeQ7gOtT68NcBp2lmUkGCiBGg==
+               type_code : 8
+               p_codes : []
+        -
+          name : LIB_TEMPLATE
+          identifier : 0x2b1d09feecbc85d8
+          internal_properties : CAAAAAgAAADYLdC/2cKdk8JbBQOZxj6oynpXk+Dq1pdxp9hU2PVcS91msUD4+Z7HY6XcIIIYvbcyTXh41YMDpJ//s0WbwFly5N5qC01O6q+y/RWKy2SfpHUgooYbjC8R+OFFwQCP1p7xyoCMD4/i9flkIufM0BhVVsXBewlBn9ZeY/5l0iM1GFznkqybf1vzeyl9x9/Pad8V4RMm921faUdeAXGYZ6JVT41Y+8storZVuMd6I0Rp+smy6P9xU8py87mfbCxd118GG3vD0VRY11WnUx58GBgEYT3ixOqeQ4er/68naROcyrf/9ny5U85mS3YColV16SSTWvpjIuXrlBI/e/vsU25531YK+lIK868E+NsMSs1PXK+ny8hTXVWM5fY9oZvxxaDyWtDJurxg4YMlBFBmsBI3Vs+9K97G2RrOUFbQTncW68Aiz3/oKCn5xZKKT3aMzVI=
+          properties :
+           y : -26
+           width : 100
+           height : 20
+          type : 3
+          code_elements :
+           internal_properties : CAAAAAgAAACpwyIR8M59Y1NHhVWxn538l7bupcxpyM1qIxuPvxjQqUPuVYh3OCg7LoAcL7V040Z4+VO86DxJTOHU4Zpjad/VPbc1b15Syyjx7gN8km8529sxLN6yUhlYTBz17g==
+           type_code : 2
+           p_codes : []
+       type : 43
+       code_elements :
+        internal_properties : CAAAAAgAAAAdaA8R7bZrsA3Gih50hOlbAZCSg1l1U3Lzbfw4izGMqbkpMgWOi9WKNNON7tSTeEBjMuijak5Tos34nMBO3WBuOAd3QzhH6iKk81IZXmSc42a/8YmGeZQu2pjxVKXg0muK5TZ8E89G9W/mNIQ2j0cnJtRl8c535YN90gnjbgk=
+        type_code : 93
+        p_codes :
+         -
+           code : |1-
+            
+            // Timeline synchronisée
+            TimelineContrôle.p_TimelineSynchronisée = allouer une Timeline(IMG_TIMELINE_SYNCHRONISEE)
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 14
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 15
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 16
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 43
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 42
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 17
+        procedures :
+         -
+           name : CouleurFond
+           internal_properties : CAAAAAgAAAB6YoGdJbrUabbAw2XzQhy+yVpLm8TRdGB+aw76MIbiRZpfNR3FBjOBgdX3M1jjS3Ki8RyWKyMhgQ7HOw7+FZT4awrO5WuTu3SRHtvVzp5UBFTa141Nfgy+6ftZeOjN
+           procedure_id : 1953732291708053352
+           type_code : 14
+           code : |1-
+            // Résumé : Renvoie ou modifier la couleur de fond
+            // Syntaxe :
+            // [ <Résultat> = ] CouleurFond ( [<nCouleurFond> est entier])
+            //
+            // Paramètres :
+            // 	nCouleurFond (entier - valeur par défaut=-1) : Nouvelle couleur de fond
+            // Valeur de retour :
+            // 	entier : Couleur de fond
+            //
+            Procédure CouleurFond(local nCouleurFond est un entier = -1)
+            
+            	si nCouleurFond <> -1 ALORS
+            		
+            		// Modifie la couleur de fond
+            		TimelineContrôle.p_CouleurFond = nCouleurFond		
+            	FIN
+            	
+            renvoyer TimelineContrôle.p_CouleurFond
+           type : 458752
+         -
+           name : Couleur
+           internal_properties : CAAAAAgAAAB6YoGdJbrUabbAw2XzQhy+yVpLm8TRdGB+aw76MIbiRZpfNR3FBjOBgdX3M1jjS3Ki8RyWKyMhgQ7HOw7+FZT4awrO5WuTu3SRHtvVzp5UBFTa141Nfgy+6ftZeOjN
+           procedure_id : 1953733451352049900
+           type_code : 14
+           code : |1-
+            // Résumé : Renvoie ou modifier la couleur du texte
+            // Syntaxe :
+            // [ <Résultat> = ] Couleur ( [<nCouleur> est entier])
+            //
+            // Paramètres :
+            // 	nCouleur (entier - valeur par défaut=-1) : Nouvelle couleur du texte
+            // Valeur de retour :
+            // 	entier : Couleur du texte
+            //
+            Procédure Couleur(local nCouleur est un entier = -1)
+            
+            	si nCouleur <> -1 ALORS
+            		
+            		// Modifie la couleur du texte
+            		TimelineContrôle.p_Couleur = nCouleur		
+            	FIN
+            	
+            renvoyer TimelineContrôle.p_Couleur
+           type : 458752
+        templates :
+         -
+           name : CMOD_TIMELINE
+           identifier : 0x1543d71a026357d7
+           code_elements :
+            internal_properties : CAAAAAgAAABniZTXQjwDEck5M9Pv5Usa5SSYk5bXZvNYHZtn12D8bUMu+cDbmFzbSiRYa6mIMVAiB8k6ooKPctv29+iVN53X752TgUioJYIf3HHOLMVjgWG/omgkIOuqktI7oA==
+            type_code : 93
+            p_codes :
+             -
+               code : |1-
+                global
+                
+                // Contrôleur
+                TimelineContrôle	est une timeline(IMG_TIMELINE)
+                
+                local
+                
+                dDate est une date = datedujour
+                
+                // Plage par défaut
+                TimelineContrôle.p_DateHeureMin = CréeDateHeure(dDate..année - 5)
+                TimelineContrôle.p_DateHeureMax = CréeDateHeure(dDate..Année + 5)
+                
+                // Zoom par défaut
+                TimelineContrôle.p_Zoom = zoomAnnées
+             -
+               code : |1-
+                
+                // Premier affichage
+                TimelineContrôle.Affiche()
+               type : 14
+             -
+               code : |1-
+                
+               type : 15
+             -
+               code : |1-
+                
+               type : 16
+             -
+               code : |1-
+                
+               type : 43
+             -
+               code : |1-
+                
+               type : 42
+             -
+               code : |1-
+                
+               type : 17
+        procedure_templates : []
+        property_templates : []
+    type : 42
+    code_elements :
+     type_code : 92
+     p_codes :
+      -
+        code : |1-
+         
+      -
+        code : |1-
+         
+        type : 14
+      -
+        code : |1-
+         
+        type : 15
+      -
+        code : |1-
+         
+        type : 16
+      -
+        code : |1-
+         
+        type : 43
+      -
+        code : |1-
+         
+        type : 42
+      -
+        code : |1-
+         
+        type : 17
+ menu :
+  name : _Menu
+  identifier : 0x2b1d0925e0cb348d
+  internal_properties : CAAAAAgAAAD7S+2GOLjEeheq9Y6YZGIRPpLnwB8KUS2je4S4X5oxSGrv51WBBaVxxbk/BTEdUwW0fnnvlhQNIBAuQTAO0S9+S8FMTvDhqkS1JydqFJBfHlbZSFzBkZAjjJ5aIH/cuMnF4Pme57TAyYvjnlkzTJmN5UX9hu+BEl3AsIsso5gsz3oX/KHp1ai/xWZCb54MlUFXdWmT2EOpULKqea/LH9EOlTkaiWsV2aM2/FfXQjTSY3NhAR6zEzKHYKVJwiZULchG0D4LNvRbPifZJPDMmlF6ptz+Rg0QN6SXG5jU7HifIzmkonwDFnOJQw==
+  options : []
+ languages :
+  - fr-FR
+ popup_menus : []
+ message_bar : {}
+ actionbar : {}
+ code_elements :
+  type_code : 91
+  p_codes : []
+ code_parameters :
+  internal_properties : CAAAAAgAAAAGH5Y2LweYhWDsQw0VK98Y/o5CXp1CiTLlIbL4BvNzKmFXlPyFQKYSYehJAxJEwPuR88mBAp767d+H86LVqFgYtbBj4k0SfxdJPvnbUG/bEyb1JIdqVexjWM9H
+  original_name : MDLC_ModèleChamps1
+resources :
+ string_res :
+  identifier : 0x1148abc50c37c85d
+  internal_properties : CAAAAAgAAAAGeIzIlpvXsSd83suWekyNcgwA5V/jB+eK8FR14SjtCU//MbCC/gzDiJazdwQ/280NFQ==
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe

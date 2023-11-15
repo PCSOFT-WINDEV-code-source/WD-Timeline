@@ -1,0 +1,680 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : FEN_Exemple
+ major_version : 28
+ minor_version : 0
+ type : 2
+ description : ""
+ subtype : 0
+window :
+ name : FEN_Exemple
+ identifier : 0x2b1d125a3a052a61
+ internal_properties : CAAAAAgAAABWOTQt7+wNHS4zEpG40+cVglyO1UdKPHufPqpFZK+etkgsszB1HSSqMEi4LtAA0SJCtyTGXmfRkt9WJOq3dh+9TVTq1fssMTc+9zR1HOGnszDNn+SoRF1EPaeM5RaYb5rRl1ZLBVVXGtqm3OkLXDJw+esu/ADCMKZqCqRUYeHZ6Nfrpc8xC08oDBcz1H+Z28nCOcao+CdjD47QxSBD3UZ5tWNW+bM1oSj7dWXvmB123xX2OM4vXlvHY5qGwMo32fL13H2NcnUm2eaVdNOp9tUT48OE1IHCD6PuVPkSFocwhWYvby3dzfJEUpO6Chtqn59BEXYAP/sLNU9bNBwcdvphr39lAB3mHrZfnMxgZ4ho/hsp2Q0kJrs2Kg8HAm9qbom7ZCo/RRH3P2WQPhiXDAvIAZ6/zvv2myGEWYwy9Q1CIA8Ld5gZqaoUsNzhOAIcpEIWolORzlocLbNdWfSZR1uutlv+N0NpFQLe7ISYUGkeW0GLPq94N4sIWkzs5bcWucJ/J6pozdNjXwMN0tiTccFL7/933i+14Z9GWGNRmkcsHfGX5DnAFdnkmGtchi2qo45VwcbTvi6cUoIfhXPPWp8/eobmvAjadWzPj9H6i9X2VWcfukqnryMEfchLtB3eLa4TvBnliRMrgR/auU07ssB8EciFR2mHRvnR8LsQTA8k15vfwPcFaccqf23ARsvcsc0FBBV9JjjsM0RVnC8AjfAoL/OFst5ojrkJHPvMtQkYBNcD44Cd90ClUe2Ye/KSvYF1DGma5N5/NqioKeieg+ThRzvY+fXUcA0vHa5E6W/gl7g7fRjkse7ED7I6jTgd9i+0UCWm/5so9vQuoR24oewXAX/M8su7tTYIYAunpiTZjcLjT/yrhNofr41OxKwz2oAw56nTMRds8qCWb6ppxdqdPGXLSzOoH3aNe5X6qb7rQ9I=
+ properties :
+  width : 786
+  height : 647
+  widthClient : 784
+  heightClient : 615
+ controls :
+  -
+    name : CMOD_TIMELINE_DOUBLE
+    identifier : 0x2b1d15ff60a16687
+    internal_properties : CAAAAAgAAADTjKJb3+vibUp79DAWJP3S6l3UmI7EYRok7zA18RuhMXKuIJhbcbl0qCLj5VATJuD4Y2dzU3EokHE567GDXxok/xH3X2HDXSdawVDiJC3l9SyaeaUPJ056b+Zv86xeSxkk3UzbMo1XfuwHUb4yEBJuqRRk3ng8EauU33yv5qX70yj3rkFqdWLRx90YQ83QkT611rUuNlyyXBxkr/l3hKyiQoyuuqemvzIquYim4CgDkb/wlxa/F87N9/gqjzWpqMQIcsGWIJpV3YtIwXTo/Y7RGZllnzxXReb9tp/trqgAaWLTi0rW/9jFoZAZA9RNzKEs3TIOFkLzB5yKHhhOIQmbXI73vppqG14xJ3UV+ax0MoCHleC6ilc2PxLZ/tvqDARbGdNP5gKcCWrYVUhA1LhzMh3D3h+oAljinNsal1JE/zryyov9U/e+XDZo4/tQVl6kqAaI63I3GxQCbMFoJtYqpP3adZLoCjaY7RxVjxQiOC+15zkKjs3lJS0m0uIrdTbwKQ2kS1IrAGHbKMBbSFk3rlcumDu4fWpSwyIEvPsHhX2HDDwcA7T0zCTlymsuyiYgRgVjG5G4vm+LNB/59o/qtziQVl7US8sI84yyEl+3OR5YLvu+kW61tRDF2XOOwILQo9j7U8ImDPePQd62Wo7Xm8nH0YlsqHCXltGFWuQaawOBDFg+Gg0Zt1fY54oV5bniRlKl98Y2AS3Q+5LDRJtyCiHrGXzIvA4Z2s6mGqMJQ/EC3AIh1XucOPuuWG0NAgMifVAnqvJi6ADe1QRo3s/BSOiSb8iPsuW0TJYPTnTESSIN6LNO/O0+oA1hjkFAiHC/rW3EqQBe37zlpQXtcIaOY4P/h+4mtB4+/06ceikvmXEOQhC6Y2miS5DdKnAJqMhW89BXllVvBvwOB5fww5BWV7LxyNVNSDex5qdVNLMr+FCGISsstw==
+    properties :
+     x : 6
+     y : 59
+     width : 772
+     height : 552
+    controls :
+     -
+       name : IMG_TIMELINE_SYNCHRONISEE
+       identifier : 0x2b1d15ff60af6696
+       internal_properties : CAAAAAgAAAAeoUDkJKd9bAfyd4njyeqzg8fHMe4BsXU13IP/Sp9r7MIjXgh0KeVoiu8S6sbw79qINm5KhQKY7Kvzu9Cl4/EX8E3xl8zAP2dFLJwgsFDNswJ1xS7pirHUveHnuV793JOSbCIcEk5X1CmV3rf4ZvfWJxIAk5VqGR9tGVJ+jQWGk7b3Tj1su+5TbxEUYHfGypxpktmCk29pVv40zi/W1JiCi03ZsYgiC0vGL3VXGuFJACNYZCQXJ35p3ZoSbcaB+lpRBXRy/S9YSDr1yjeNAxzsgmV0Bb78mjoJ9BUyYBAdQcufyLEPkAvQFxLwNmrvMwVAvyBT/73K2IZAG241GoDNaFajjQHgmoH6h14DmLWCdqoxEj+k8KgkZFtXWv5CNBzLf/4gbD+Sx95+RJs0gie3hr7HLMeDGZ3O1jtuTy7XW/yk/mmUskYpW2fos6v35E0aoq5pPYedL2/n9y5hREbNEBdtUF9EEG9016TryO57VqDyLb9bG72erxdQHt2vVeh7u1mYKtdO8U1e0VVLPeRSgmMoyk6Rby0Cnx8aTUF4oVq12wCssYq1xxLvhVZYZcUz5RRRDqHYprqx2SRFoBT4eoDCaPYcFXwPkfPk022+6STKBXd7G2tHLjFLHE+m9Uk0VvLxfUwCnA4Uqu8gvTIpJsHwzDF6z3iFQUrTDpsDK/o=
+       properties :
+        width : 772
+        height : 488
+       type : 8
+       code_elements :
+        internal_properties : CAAAAAgAAAD0aY8wU0YMZmgPRJe1esf/wMdimujaGbp6kwnib4F1SSWKS1/p5Z5469olWPCgDbYEEo/A1qJvVsjnwdaBfwudCNhbX4pL9IfXDtxTV8YkBNFF9a0buRGzn/pcZUODAca6aDnO
+        type_code : 8
+        p_codes : []
+     -
+       name : CMOD_TIMELINE
+       identifier : 0x2b1d15ff60b56696
+       internal_properties : CAAAAAgAAABl7grP5VSjmNZGuaDxXPr3bOeVz9/ecbbNa8uFjqrLqVJLJMf2giDb1RxDDoS4O9ye0hFOzm92zyBpIOSfNsjxyQMH6lHVFhpSKihNcJQqIRWz7dyHkVVUiAtHqbSHIbHPD9muAiQzQBuTifpHHDE16OOhxoh7DUr7teBJx8p47qyc+R0GDshmwm70iiCgGytjEe/QOixt3rwgHLhftrmCM8FZ5Ww72BItiHB7iAroYN/2e2/VAVlFbkJH2IyyLBJOvQNssMuvgIodo8mzuX1fC7GbJL1qkRvnoOwMCMewBIJRXdbyVBI2ww5Klfuv+D1qL6LJIKMMdoMQoPOzwHYhGjZX2k7oa9cq5GsBTINrkPRHYn9+YQOa0tVkViUFuXmQTbNbb5GI8CEqtKGBHi+iMnVb+UYRKtllt3FdwJvq0IhM6uPCpYXU1QocH5zM5UmE/DEs6Q7Csav42V6448BE4/dxDr0arN+UPAdEVk1hploqVuDK5ZtKjgLwP5akIE4kxk4DVRScC+k6fo7g1zfbc3LxHo0ICnkgma5gvuS//ZLVc6LZB2YrLA0RqOKnAoo+JyKtoh/FDgQVJTSndH50VceP423UgtWd9JZr7GrcwPbcysVI1VDhOl9t1Tvl3/CxXtVCA2new6GQopxrUDM5efHdWG8DXKDPRNw=
+       properties :
+        y : 487
+        width : 772
+        height : 65
+       controls :
+        -
+          name : IMG_TIMELINE
+          identifier : 0x2b1d15ff60b66696
+          internal_properties : CAAAAAgAAADlxUyXgLCfLPOQxm8mjhOAA1/a84zyCdVJLBz809EvZFqcFg/OXkdUcYGyTB+6h2WzOMpG62wUOeoz27wsjcr6U1asdljTOXUOvJnLT4KRe0LOcGGV90SwPzg3NmSkgn7MHN1/JpauBAg2r4hbTYTikjOdXz/44SdaD4FbRBM3AVl6LAMaAE9iwQ6A6cwB5Q2wnz4R/a20wKUPY0O/po7wlWN/zXrKDFnPNZqi4c5n3rOD2BWfk9kd1OtCBhudtPRw+9W7OGHYNAIVCRONSzNJscM53c7ik5LcA2ZU43k/1OQvpJ/tpQh3iMrWvEMR/iYkcobKQPirRWdzmuGGBxwHZzFQuD96iUYqQCdp8DQ8mbv73B3JNRm65mxAtyuj4UIZJOLSNUrxQ2MUiiGznrGM9VKkLu5b3fdaK8rbHXeB5oXB69gs++UTZlMkjza2zdjNybaa1qQ68Puhvguz1kUq1t5VDbx4OO/rKTS9ACcv0OwxFuD3XFQxMfXTZEMmMpFMRjYu6x7+yZQLNkIghuUqVIqX2Jh97A7NLJfjmpsAFeM7AKbK9f7jhuMWYuLSUHTgRDAOVSjS/0RTO0wAL6YEp1TALR1UuxJquVgKFP7zZT7aCRr6k0e8m8hlrK+3SjI94ltbOP+ZIe9YTDWMXCWYmVmMNyxRXIud33ZdwLgdAigb1xfPZ4j6q6kZ6AHOotaUi3UY1ZXeyhpFgwOq7rbJtamoWfmYodU3F1ePUI26IZpjtToubsq8uxwI0iSOvM19I0DgzbwdDpqMCjpkFxc8Jqzb5ERARGw2TuYLrG9SU9fhq1ai
+          properties :
+           width : 772
+           height : 65
+          type : 8
+          code_elements :
+           internal_properties : CAAAAAgAAACE+b/Agxa8Vjg/NEdlirePkBdSathqiSrKgznSH1GlWTWae2/Z9Q4oOxoFuLCgbTaksj+wxrJ/Zvi3sSbRD/uNGOhrT5p7JLcH/syj51aU9CEVxV1racHjz6qMNRPTsXbKeMm+
+           type_code : 8
+           p_codes :
+            -
+              code : |1-
+               //Exécute le traitement défini dans le modèle
+               ExécuteAncêtre
+              type : 14
+            -
+              code : |1-
+               //Exécute le traitement défini dans le modèle
+               ExécuteAncêtre
+              type : 18
+           templates :
+            -
+              name : IMG_TIMELINE
+              identifier : 0x1543d71a027057e7
+              code_elements :
+               internal_properties : CAAAAAgAAAD0aY8wU0YMZmgPRJe1esf/wMdimujaGbp6kwnib4F1SSWKS1/p5Z5469olWPCgDbYEEo/A1qJvVsjnwdaBfwudCNhbX4pL9IfXDtxTV8YkBNFF9a0buRGzn/pcZUODAca6aDnO
+               type_code : 8
+               p_codes :
+                -
+                  code : |1-
+                   //Exécute le traitement défini dans le modèle
+                   ExécuteAncêtre
+                  type : 14
+                -
+                  code : |1-
+                   //Exécute le traitement défini dans le modèle
+                   ExécuteAncêtre
+                  type : 18
+               templates :
+                -
+                  name : IMG_TIMELINE
+                  identifier : 0x1543d71a027157e7
+                  code_elements :
+                   internal_properties : CAAAAAgAAADdTz4tzLq5r58L4aE9KwlYo9pCKbD9fOFOj0/jg7y0nRdqwSSTpITnzqDcH01s91J0JW+YDNDl6E1AXWY3hTuxGYuBkzq+P5xlkqeQ7gOtT68NcBp2lmUkGCiBGg==
+                   type_code : 8
+                   p_codes : []
+        -
+          name : LIB_TEMPLATE
+          identifier : 0x2b1d15ff60b76696
+          internal_properties : CAAAAAgAAACy1osmv5qe3VQIyBDAlaBEkTds3j9dYpCJOjEGCLvCq4kdgGRGE+Yg1ynIBn0LFszYu7ilIQZizX4yK+Ep2O6YYFz6ghX4YasodQ1ADjVJA2iaiLBlGDCoKgdnOZEB4CPFpy73NX0z94NBAeERzsrabpDvO/uL4fbzZ5eID4ZBN7FxJqymF96wr3iqj+dGLzn+ArOQHjRM2NWBGjrKFwjMqZlD3oHHpn855zVqS3rOvXsS7HeHR1qIVutcjxO+zFq0o4H/X6KqkuobuSP3MaLpWEWhYOtd+UMzT/pWafOlpWUSEI1BpIn5SWN9BIti11YBcDx/r/C3sk0HWZe9+KX0dVrBQ77DqRTe9uNr0zAEzRb3DqlsNqqP0/3lQ0Pc///MfbZ2cwkCSGizDEUZlWdXEwafeFOohoLDm+VQrlb37jatAd97/PHyZhpYhRpwnU5GtBEEPdh6kdQzxrbqQcwzYYmatS/Qx/UW0gs/RvlPCDifrw==
+          properties :
+           y : -26
+           width : 100
+           height : 20
+          type : 3
+          code_elements :
+           internal_properties : CAAAAAgAAAColUNkJwpA6pyb0DNR5lOr/HsOVjR25ZZ2h20WQ2WZbQnmL7NNmeIM09rdmDgo7YYsylOs2rZ7Wpzz1cK1K+f55Dw3c2a3WGvLMvBHQ+p42AVxqXlPTa3P+4bokbc/zRJmnOWS
+           type_code : 2
+           p_codes : []
+       type : 43
+       code_elements :
+        internal_properties : CAAAAAgAAADlF5qTRGRh7JE2EpabW6/kIQrHfyFNqzKuVToqlEemZsUbL3yD7Wsb9up/tT+/KJOSo2nml8N5sqPlWJRljv8nXy4etsLpzmK0p+mWGuHCkRGA4K2XGKkXNeoLhCoBfR61133icxBbJ4F6ZUajGAPJihRIEJAOfJIk16XfoWW63thX4qxKcQ==
+        type_code : 93
+        p_codes :
+         -
+           code : |1-
+            
+            // Timeline synchronisée
+            TimelineContrôle.p_TimelineSynchronisée = allouer une Timeline(IMG_TIMELINE_SYNCHRONISEE)
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 14
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 15
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 16
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 43
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 42
+         -
+           code : |1-
+            //Exécute le traitement défini dans le modèle
+            ExécuteAncêtre
+           type : 17
+        procedures :
+         -
+           name : CouleurFond
+           internal_properties : CAAAAAgAAABW4eEkTCJPxnO1egJf5liFeubZFnRO3evoGFFZrZSOh9MPAXYMUcoDUFLenVkTpyCqEh7goWteD9FKf3l0mZlsevqKsfHHK1MJds4jFx+i2wh3SOSExwps6U5GiolKW9iJUT1F8Q==
+           procedure_id : 1532304804945811431
+           type_code : 14
+           code : |1-
+            // Résumé : Renvoie ou modifier la couleur de fond
+            // Syntaxe :
+            // [ <Résultat> = ] CouleurFond ( [<nCouleurFond> est entier])
+            //
+            // Paramètres :
+            // 	nCouleurFond (entier - valeur par défaut=-1) : Nouvelle couleur de fond
+            // Valeur de retour :
+            // 	entier : Couleur de fond
+            //
+            Procédure CouleurFond(local nCouleurFond est un entier = -1)
+            
+            	si nCouleurFond <> -1 ALORS
+            		
+            		// Modifie la couleur de fond
+            		TimelineContrôle.p_CouleurFond = nCouleurFond		
+            	FIN
+            	
+            renvoyer TimelineContrôle.p_CouleurFond
+           type : 458752
+         -
+           name : Couleur
+           internal_properties : CAAAAAgAAABW4eEkTCJPxnO1egJf5liFeubZFnRO3evoGFFZrZSOh9MPAXYMUcoDUFLenVkTpyCqEh7goWteD9FKf3l0mZlsevqKsfHHK1MJds4jFx+i2wh3SOSExwps6U5GiolKW9iJUT1F8Q==
+           procedure_id : 1532304804945876967
+           type_code : 14
+           code : |1-
+            // Résumé : Renvoie ou modifier la couleur du texte
+            // Syntaxe :
+            // [ <Résultat> = ] Couleur ( [<nCouleur> est entier])
+            //
+            // Paramètres :
+            // 	nCouleur (entier - valeur par défaut=-1) : Nouvelle couleur du texte
+            // Valeur de retour :
+            // 	entier : Couleur du texte
+            //
+            Procédure Couleur(local nCouleur est un entier = -1)
+            
+            	si nCouleur <> -1 ALORS
+            		
+            		// Modifie la couleur du texte
+            		TimelineContrôle.p_Couleur = nCouleur		
+            	FIN
+            	
+            renvoyer TimelineContrôle.p_Couleur
+           type : 458752
+        templates :
+         -
+           name : CMOD_TIMELINE
+           identifier : 0x1543d71a026d57e7
+           code_elements :
+            internal_properties : CAAAAAgAAABniZTXQjwDEck5M9Pv5Usa5SSYk5bXZvNYHZtn12D8bUMu+cDbmFzbSiRYa6mIMVAiB8k6ooKPctv29+iVN53X752TgUioJYIf3HHOLMVjgWG/omgkIOuqktI7oA==
+            type_code : 93
+            p_codes :
+             -
+               code : |1-
+                global
+                
+                // Contrôleur
+                TimelineContrôle	est une timeline(IMG_TIMELINE)
+                
+                local
+                
+                dDate est une date = datedujour
+                
+                // Plage par défaut
+                TimelineContrôle.p_DateHeureMin = CréeDateHeure(dDate..année - 5)
+                TimelineContrôle.p_DateHeureMax = CréeDateHeure(dDate..Année + 5)
+                
+                // Zoom par défaut
+                TimelineContrôle.p_Zoom = zoomAnnées
+             -
+               code : |1-
+                
+                // Premier affichage
+                TimelineContrôle.Affiche()
+               type : 14
+             -
+               code : |1-
+                
+               type : 15
+             -
+               code : |1-
+                
+               type : 16
+             -
+               code : |1-
+                
+               type : 43
+             -
+               code : |1-
+                
+               type : 42
+             -
+               code : |1-
+                
+               type : 17
+        procedure_templates : []
+        property_templates : []
+    type : 43
+    code_elements :
+     internal_properties : CAAAAAgAAAD7fdhNhWZO4I4BTpq7ofEwPn6r87shm+cMO2+a9uF3UmZA5tgIR7thZtMPHLLnxIXc//AXWXr7a0wfBkwt8qfrc9LuQHgPrEBCdfei/ODeTZ5z6qroBxhWEjwecc7nw379tJKSpBrFsn7ZpGKl6O5koQORz69OsHCcC9nzHova2RcVIO70jw==
+     type_code : 93
+     p_codes :
+      -
+        code : |1-
+         
+      -
+        code : |1-
+         //Exécute le traitement défini dans le modèle
+         ExécuteAncêtre
+        type : 14
+      -
+        code : |1-
+         //Exécute le traitement défini dans le modèle
+         ExécuteAncêtre
+        type : 15
+      -
+        code : |1-
+         //Exécute le traitement défini dans le modèle
+         ExécuteAncêtre
+        type : 16
+      -
+        code : |1-
+         //Exécute le traitement défini dans le modèle
+         ExécuteAncêtre
+        type : 43
+      -
+        code : |1-
+         //Exécute le traitement défini dans le modèle
+         ExécuteAncêtre
+        type : 42
+      -
+        code : |1-
+         //Exécute le traitement défini dans le modèle
+         ExécuteAncêtre
+        type : 17
+     templates :
+      -
+        name : CMOD_TIMELINE_DOUBLE
+        identifier : 0x1543d71a026a57e7
+        code_elements :
+         internal_properties : CAAAAAgAAAAucZO8NFB8gAoQ+x0t+aIkcEFRknw404SnX1PT+ch1D4f9TcbprzqiVzTidfyeku/wIyfRXVQ8hu0UDSH//mWAPHauV9cCvoLZwV3SEmLh2ENtzLU/7Qsrl3rRT60jJSY+E62FpqfDWYj3EncYG7Iq2kfd2T/d3q1t13Z6dRgMvTg+
+         type_code : 93
+         p_codes :
+          -
+            code : |1-
+             
+          -
+            code : |1-
+             
+            type : 14
+          -
+            code : |1-
+             
+            type : 15
+          -
+            code : |1-
+             
+            type : 16
+          -
+            code : |1-
+             
+            type : 43
+          -
+            code : |1-
+             
+            type : 42
+          -
+            code : |1-
+             
+            type : 17
+  -
+    name : LIB_Pour_faire_défiler_la
+    identifier : 0x2b1d2025f24a0fe0
+    internal_properties : CAAAAAgAAABBcYZ4DCkVZPNDpskYOuQoVfe4mocg2IsUA2jtOt6wtElV+3iLLlNJt7UbO72YJYt+8yIFwPauMCri21DtsffFkDWrS6/BTP6Qa0+nCq4PCoj77+MWmwh0ULyKliP/O6SoAjPVqUfvy4fTefvZAZPNj7fCVZFaJqjGgXrKYK4J8QcTUUg8RspIp39AFMoEaPV//lPl80f4jAbKG2nlZEVzOq/sdjhs2W61/77GvE2lzyiO3j+dBQ60o9bBKraUctfJs5fm3ZH6m/WcUaTqEZJtjoRY29A3YU/4LrXyO3ZCiQPT9J36wzZoc61Ae1eiPdOPAMXTUR7zmNRTdeOniFx14Wa2Y/jtV+lsVLaRWHho3MBOlb2W/06ALkGqtirZIxC/3vG0HE9BU/Hrtp77OI7oivJEeqmVEtJn25yDgfZrXh9xhifMkf2PbLXsmOxJI1MZmQNOra/GZh0GLj6D5JnnAUGUJdMBc5TSH/zsV7EUXq5oeODewXbQvMz8RBWZ/jFHWW3BFJKRf6qVQJCcl7YHCL5Vspe7P6K53U0HKxn1OAI5fE96gjG+L/Q0XBJDd2NEWAvyT+Huf4SGeiZCzay3TzNE5aUdWg==
+    properties :
+     x : 6
+     y : 6
+     width : 549
+     height : 47
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : LIB_INFOWIKIPED
+    identifier : 0x2b1e29283b3b38d8
+    internal_properties : CAAAAAgAAABEEUeMptbbqX4bOBjOCeAaRW0u3FsimiuzdPUCmRoHlCTGPUSlfDEhnGwm2FNUQ3tbzbMt5kpytp7kbs3/AcF0yghDmatHxwU+XUbvW+aA2xnilwuIWwoQnwvLdu16t0ghiBiSrMPJZZ50VcLDtsuAXZYYVXHpAw+MjYXwdYsHy+tbQvkOVuJEKpl+ytd49tZx8EGGy8Gqp5A8El59/T6TspuWKDKFwgEYoHyrPEFIZY2MUVGrGgxckYBvd44EiNS8BeYf4PsvCQdkGdISs21KyZXDErj6dSUjoVoFAU760VbmObGkUgAAwJQbA2fe6S9bfHrhhgNSlxDbpAvTwtB/XibSPhbaUnINL7Y99wOEb7BVEAeDEDnJ3Hps1077Sv4yVX+40Q5kEWFdVcUQ/iUftEtSnJrQ6i6kTKJmWI2LVHXJrdwivj/u5K+R8tgOVP0/0WGRDmfb1s7DVqrYiLO39Uc6UBfxfDYcTMJfWb/BM2A5p6EW+gLPU24G0OBL7CtWKjTUZ601xA==
+    properties :
+     x : 623
+     y : 39
+     width : 155
+     height : 14
+    type : 3
+    code_elements :
+     type_code : 2
+     p_codes : []
+  -
+    name : BTN_SUIVANT
+    identifier : 0x2b1e2cf453c30d27
+    internal_properties : CAAAAAgAAAB6LiLo9Z2b6p8gmjq5+Nw9BA29HJLPp3zoUoZ2nzv17HwUek9D3xo2nvgySxr545hn92IRaftjOOARnsoEC6thobmVYOzW7NX88fwa23O+Xqj84YfmGsd50La9JaR1QZSjdnwHGUHqgdPGi8rCUtcIV7kHX8wI69KfZqmQw5xGo1yCzMCX5vu7mHe8oAxkkaZ3RGnNjXRj73UaNuQwii79LzEvwPFyRqpFNyhzl3Mg0yTDym6DVuwP2o91MEAJ06kt0O/brpkCX8Ljzy+h3F4ju6GO23RkDsUjnfFlIRoGjlrMRGOjIdoNnPwlC16q66OMD+iHnuga7f+Nn89ReKHd/qIcGgVldJhpUHKKdsR9KYHRFndkRW/bwJvXFxlxtXA/lAmr6BzAa4keWhPnc+8HRX8KtGei1d5LctjEXfLBQBje0pCBpBchaDomEVdij7Mt08WYEdNO1DT9qiIsPQiWIMAOkf0dR18y/436JVm4+aLhaW4MGf8DHU+oT3IO5UysoSkAp8JSmvNX/dRFLndysNGSSDUw4ohwjooxtL3jB9v0OYWkZDqKi7VWtYkC3F0pBI4LTu3H8nZ3rhbNxvbAlq3qmewBhZMD7ovWrGjFvkiQBBff26NcJnpeRRNedxRUyklvklhzAM0ckjKBEzIgXX/YX1qLn9r1eerJiQ6nC6mP1ds//csPAcrB4xCDHMbQd/c=
+    properties :
+     x : 754
+     y : 6
+     width : 24
+     height : 24
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1+
+         
+         // Intervalle suivant (dépendant du zoom)
+         CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.IntervalleSuivant()
+        type : 18
+      -
+        type : 161
+        enabled : false
+  -
+    name : BTN_PRECEDENT
+    identifier : 0x2b1e2d1857d4998e
+    internal_properties : CAAAAAgAAABzfXYjJ4uJZPYCosl6IeDjZTa7q/v8sAXbw2Iyrv0PEFdkfMbRjdOpOgxmz6k9frrxZnwcAWHJ8yPqR0KSbLhC6RVjwcuF+Imo73iD07T0VGCqvN4TeMaazaybYX421SgTuGuwymy+r88FUis+GXQc4YGs1RPuW+5ssB+cPx7ibjUzQuY6p9fS99eafQH+5cR6WF2K7JS4upNv7PxXDj3qsvLS+U6k6uI4Mv8J2jkKBCa8KE5Hxl6B21+8DPBIWsaRP7ZdbBHKAtZQef2eEJ5sSx1ODgo9QLX9Sexn8BDt77grvYWzGJUPNGgIhtYqF5RTQ9Zdzyh6JpysSijD+e8iTgy+/fkSfRjpPPvdouX8kZckmdCMLdDvcHlPeBhUsgF6WNk10TQ1zVlznRDlCHqSUWW/CGoZZkWfVgNVR40HCnCz2TVMuHV9geW62N10LZUp92OqooOhTQG/43C/mcokixtQbR7vTa8ohcL3z6tRfKlDXjhEuDufgqbFqlY4LzrrvZ673OL95rvtirBZWzAX2ZZ6+ECUOF+bvzqRbrRHc8V7h3YFRLxkpJQThPIuoYG/fppFBs+rm7gzHmpLcLYAC+DTBkpX1c/M/K/sf3ymDcGp6N/H0c8iIF/Gf3az5w2umO4qcya21/sPZsaxgXS1NXdXcoVzV4hyYSnLhs6o0ul+75IxQA8v2Q==
+    properties :
+     x : 730
+     y : 6
+     width : 24
+     height : 24
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1-
+         
+         // Intervalle précédent (dépendant du zoom)
+         CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.IntervallePrécédent()
+        type : 18
+      -
+        type : 161
+        enabled : false
+  -
+    name : SAI_ALLERA
+    identifier : 0x2b1e308e6a4d1bc8
+    internal_properties : CAAAAAgAAAAdjVOSpG5C5yDl3Y2UxnKV3IWtXhbXlQydx7KuJwj1KefeiaIHgehvHiB3fWNiAWHY1XdfQ3PaNvWFeeRFLcgfHt8hPEvOlB1avsJidB0HEF5vS/0pwlzA360jLGk8BKJ/j5jrJpE3SMr/RGjh/DSQVv0nhcbnAiJMNEr/KIG6yJB+Y063mUCiLa+ieTDsMPo2D5VYXyHp3/GaFpo1QLrzbIWPOsQdIjKroZt2tM2CQI52ouD6HYLzf6zmHTqp/H/rYfW4PRiEd4CKU024UUBqdMy2gi8NkbCzjLgngREGILtbDqqzjEHJ+8mRvU1fOKgZ0mCxm2aLJn0vzsdVf/hVWZKPuLQrbP2YhamdpTfmTDXX7dmXU9GnwDb5/q+Tk7PafnI3Pr/bXMLWnCBqY35ZaO1PMgP9V/c4vwfaELaf+0dIMjKZO2WrwujMKrDA8WM5XVFk7rx4Sty0rwfktLi9jKUdc7gIT227uMisAna1KPhGItG8YuwrI4P4ZKjB+H5n2tAIsyUV7MXOMnCEstztAQlHJBzIAHSnaNoWIJWLqQX3dmuPYiFDBYHPiYRvSQmbWP8Eh8yHWBIjzQ2uHIvIFXCK2PTM5mILWWOddq2cjcR6pIUelKw4wExF9xvWoCp4jQIH+RTcUbIAslZJ7qSeyxU2tcfVYLEN3D2Io8+MOY4Efz3L/iQunynu+CoXnYMqzMpmXR/J36MsHvXsRwPQQDY1XAadneFNUWnYmIYE7CaaTtUDBexIDgroMX8A2telacVoIwSPh8e5oObQsu4jPyNbGkpKcIiLYLgMkApvP3mfowXepy7bh/AyaQcmOlx2e9AxLTSuO9CZ7Mbto19kruk00NiI68nbH4/UvnVnGdV5/VsHKMPjspW4AIer7T3IccGX3Y+h/iJcSEBfDEUfSMcTdvJSZJV2jnDUy4dKDAoK
+    properties :
+     x : 570
+     y : 6
+     width : 133
+     height : 24
+    calendar :
+     internal_properties : CAAAAAgAAABE/VpWtO0Ux2HVrjaRQPZB/wiwrfDz7iP4NzyD5D6LvCPG/ti63lqZtUHW6KWDRfYIt8CxeoX/coUQUy1K0IQnKy/qO8y9eS1X9e/uHGIPTHlmJicO7sPabgJ5mKUvGdclKtRhyidzHYDkwU/+UdgBAk4X4odEQS4VR8sEyRMjylU7RocvlBgcNQdGoxvnkxjv3QHNK/hs1uib0jEezGANghLrbqx+iesYLCndH253hanokTNJIxvjm6o122cF+hkK8josga64L5f29oeebnBw6VRogNwYODrfU+2GSDBYfibaHW0tblhv6R0GqxfBWKGysQ2w6tfih38bjqpVw9FMH1JascQzR+V3ru1GlPZp5mNJGKCZ3VEYlNFBxTKA+y79nWOyHskocJwrpXT/UbEHeJlzPbKM9oyw12gqWbruYbQK0UAqJL8SvI7zyZLQuRoD+AFd09RtLZ1TP1JKH+qOEB6k6scbAqeYKQX7abA5NYioYHaWFNLv6BmCBJ+VDcJPO+Zawfp7kP0CZfy6iBgR5cbW7tUDAMnXEeu1eJsqjtDjHobVRDChJdTdEiE4cwETHdVWdxChimP0/2WhA1apIS7y0C+jSHTZRhJSSRUgu3HJjdTjFQ7NeWCQ6xpVnvr0zw3EjnEEQRKBSW3wxOHB4TIxaAm4QHhtO8iM9q6pYs+gdjdxA4mLG1vqEWrCdwmdJhmYv4hOci1OLvI+Iil+L+J0+nS7/lp/D2lvokZ0eOhCfFZpUmQBGbMDLrSCs3DLyrL7tFpAqpf6B6jVptRTFzFRK14XXy0RPkftTcubzmzH4gJEK4FhrL7qAoVJO3pfJdlXIjBiRGmJU+d3R0GZ3YkRV1VM93W0PW+6gUzBotA6HC8OEtJM/GNaKQ5lUOsoYo5UcZxwLyX2aYquEWoB2Swrg4zxfiB/cZBQLGIXAUj3TJzPmsTeCvZueLenXd96bQycvD2UnKgzl37ktneIOCW5DLhU2Xasdl1mfyhDfokyInP6NQeShRRZuU7pr+EqdSjyiLdnRFl7nFARXUG6ethUgC1/XA9m/5l8D3IWRH7k4MIVzkjUacD6eml2DQCsc4Qv2PUbQbPzPUF5zVudooE3GEKenjPvF7G0M4SAUz3UlzT+MWP9l3PTl5Rx3fz5cNwYs/kVJjXPmyqdZA9hAuGLVz+saG7MEJI/mMvgoy8lKP+0lLnp53kubWwh777Ue4N8mwG7oc8mAU6GU2Pk41A9LYQ1T0saiPqKNpR5UaEcN56pQy1bbPuY5WCMZdofSlf+/oKI5wDJTXLdzyZFIsuF75J2VowpbP9t6Nxz7S08/lMEsA8NcYtKJUwKNZSDOMwYFFcPsZ0f3/jUfEW2nBto7AuGmvYuj0rExfUYwo0AxtwtBFlkihRDYm9FQsKi9uH20+ZdLmsDUDnjU0NqD9ftBHxhbilsw67pAnGFLeh4foDJLmhthhTCItXdGjOfNsCP0BqfmW52fuViFFbLj7HwuKcxDn9mSA6LAoxeRRXx57eXeKCzSArDmUKVmDWxAtEpHbbrakaLocqdSbM=
+     type : 47
+    type : 2
+    code_elements :
+     type_code : 3
+     p_codes :
+      -
+        type : 276
+        enabled : false
+      -
+        type : 277
+        enabled : false
+      -
+        type : 278
+        enabled : false
+  -
+    name : BTN_ALLERA
+    identifier : 0x2b1e351a9873e444
+    internal_properties : CAAAAAgAAAAwg2a5s4LkH9Bcq4mxCZRO5BQF31Sgd6ug8+C0pfVu/nHNgA/KFOU9vk53qvYGPJuBH1eAja385V1f7jTei7KRZvvyTfFslzezQBYHwNhPkkyO++bJx5YKQndnm0ZFLsonvoEMqjFAZcrYl1voC2nMmgEgKQqC34u9cpZmp//b0wN9onty7u0cjZ7dYMonCKe7/dkqMZdMzfUpsqgLaZ2V8CK4vFnRYJKnkiCw6kwUzGi7r4om/gf5pN4ScvsthElyx2XAYFtlIK+9ljO1bHRqyaMR/eijkHFRdiPhsxEjbRGZ8TDcfqNSg7bBluCBFKUCUu2ux/AKdwxFA1bJbjjrHEr3mrrxSezKYr1ZUHHfk/Lvy79tEokDUWxSJiUL0JeZw1yrysNpODVLeSRC2voalP+heHf+rfmKF2Ysy9vk16pcRB52Wx2oEURytSIPsmLrN94nKNFdn3lW2wJBoybZ+eFI2kXN0yS3ezo1fCu6fWnxFIM2HdtbRQQZm7KT68rPlJPjt6x3l1FjWiLATn18HrNqEGMwnjzmmsi1q8MDafE2a7mPzPB4GgbLr5TRPrd2ULl7QUxz5NcW9UscnUN4ZVxZeMbOl7RMSc9hV31P0sCOE45oK0jKwmjMsJOoJpm+VXHsQnebRYf++zETyxgZjgYWqnEtUDk6MP6m2e6VNp8Lx6uP
+    properties :
+     x : 703
+     y : 6
+     width : 24
+     height : 24
+    type : 4
+    code_elements :
+     type_code : 4
+     p_codes :
+      -
+        code : |1-
+         
+         SI DateValide(SAI_ALLERA) ALORS
+         	dhDate est une dateheure = SAI_ALLERA
+         	
+         	si dhDate > CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_DateHeureMax ALORS
+         		Avertissement("La date maximale a été fixée au " + dateverschaine(CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_DateHeureMax..partiedate, "JJ/MM/AAAA") + ".", "Il n'est donc pas possible d'aller au delà de cette date.")
+         	FIN
+         		
+         	CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_DateHeureSelect = dhDate
+         	CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.AllerA(dhDate)	
+         FIN
+        type : 18
+      -
+        type : 161
+        enabled : false
+ menu :
+  name : _Menu
+  identifier : 0x2b1d125a3a0c2a61
+  internal_properties : CAAAAAgAAADAfZ27Q+jJ/MBXHLGCb7PyE2Yqjvuo9mAX2ZN+LLuyQtzms1431znXR0sNCCeLESXZp1gqmo+m2mUhb2ELR2phZ8VOgUSyXddfQyxpxffipvH/iiFuFkCLgpjx1Ah9/9/ndeRpWb0s9Qcjy8oPtW3aMcRtuglgDe5Ch9/jnC/Drp19/hhf+qz96diLw5T0yWlzg33c/E8hhMwUBdSOV69/8iDQGLfTvLoTvV3YkiQ5Dce7dxB2gUx1AVvVTykQMm7G+0haIOV568KMGgPEJluRN2XjgQ11Tb8vVxt6P2g=
+  options : []
+ languages :
+  - fr-FR
+ popup_menus : []
+ message_bar :
+  internal_properties : CAAAAAgAAABdQs99NPjGrgR3taVEkIDzAffqDeVRhDejBs7w1XtJG3WWV+XKlBu/ndHWTVDNH3qUsHQ/XP6pHYGwqs+aunySPxnaOml8dIhkWPCCCzRc40lqOnfJWudKYxQc
+ actionbar : {}
+ code_elements :
+  type_code : 1
+  p_codes :
+   -
+     code : |1-
+      
+   -
+     code : |1-
+      
+      
+      // Pour manipuler la timeline, il suffit d'accéder à l'objet TimelineContrôle du modèle de champ
+      // - Dans le cas d'une timeline simple (modèle MDLC_TIMELINE), on accède directement via <Champ modèle>.TimelineContrôle
+      // - Dans le cas d'une timeline double (modèle MDLC_TIMELINE_DOUBLE), on accède via <Champ modèle>.CMOD_TIMELINE.TimelineContrôle
+      //
+      
+      // Période par défaut : 1910-1950
+      CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_DateHeureMin = "19100101000000000"
+      CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_DateHeureMax = "20220101000000000"
+      
+      // Zoom décades
+      CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_Zoom 		= zoomAnnées
+      CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_Callback	= "FEN_Exemple.SurDoubleClic"
+      
+      // Crée les événements
+      CréeEvénements()
+     type : 34
+   -
+     type : 180
+     enabled : false
+   -
+     type : 230
+     enabled : false
+   -
+     code : |1-
+      
+     type : 2
+   -
+     code : |1-
+      
+     type : 11
+   -
+     code : |1-
+      
+     type : 12
+   -
+     code : |1-
+      
+     type : 17
+   -
+     code : |1-
+      
+     type : 13
+  procedures :
+   -
+     name : CréeEvénements
+     procedure_id : 1953756747312384928
+     type_code : 14
+     code : |1-
+      // Résumé : Crée les événements retraçant l'histoire d'Internet
+      // Syntaxe :
+      // CréeEvénements ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure CréeEvénements()
+      
+      	tabEvénements est un tableau de TimelineEvénement dynamique
+      	pclEvénement  est un TimelineEvénement dynamique
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19101120"
+      	pclEvénement.p_DateFin   		= "19110527"
+      	pclEvénement.p_Titre     		= "Révolution mexicaine"
+      	pclEvénement.p_Description 	= "La révolution mexicaine dont le début est fixé officiellement au Mexique au 20 novembre 1910, jour de la Révolution, dura jusqu'au départ en exil de Díaz le 27 mai 1911. Elle est suivie par une guerre civile entre factions révolutionnaires et entre conservateurs et révolutionnaires."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/R%C3%A9volution_mexicaine"
+      	pclEvénement.p_Couleur	 	= rougeclair
+      	Ajoute(tabEvénements, pclEvénement)
+      
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19100822"
+      	pclEvénement.p_DateFin   		= "19100822"
+      	pclEvénement.p_Titre     		= "Annexion de la Corée par le Japon"
+      	pclEvénement.p_Description 	= "Le Japon annexe officiellement la Corée, qu'il a conquise, et la renomme Cho-Sen (fin en 1945)"
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Histoire_de_la_Cor%C3%A9e_sous_occupation_japonaise"
+      	pclEvénement.p_Couleur	 	= RougeClair
+      	Ajoute(tabEvénements, pclEvénement)
+      
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "191205142340"
+      	pclEvénement.p_DateFin   		= "191205150220"
+      	pclEvénement.p_Titre     		= "Naufrage du Titanic"
+      	pclEvénement.p_Description 	= "Le naufrage du Titanic a mis fin à la traversée inaugurale du RMS Titanic, qui devait relier Southampton à New York. Il se déroule dans la nuit du 14 au 15 avril 1912 dans l'océan Atlantique Nord au large de Terre-Neuve. Le navire percute un iceberg sur le flanc tribord le 14 avril 1912 à 23 h 40 et coule en moins de trois heures, à 02 h 20. Entre 1 491 et 1 513 personnes périssent, ce qui fait de ce naufrage l'une des plus grandes catastrophes maritimes en temps de paix et la plus meurtrière pour l'époque."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Naufrage_du_Titanic"
+      	pclEvénement.p_Couleur	 	= vertclair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19140804"
+      	pclEvénement.p_DateFin   		= "19181111"
+      	pclEvénement.p_Titre     		= "1ère Guerre Mondiale"
+      	pclEvénement.p_Description 	= "La Première Guerre mondiale est un conflit militaire qui s'est principalement déroulé en Europe de 1914 à 1918. Un des évènements marquants du XXè siècle, cette guerre (parfois qualifiée de totale) a atteint une échelle et une intensité inconnues jusqu'alors."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Premi%C3%A8re_Guerre_mondiale"
+      	pclEvénement.p_Couleur	 	= RougeClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19150401"
+      	pclEvénement.p_DateFin   		= "19160701"
+      	pclEvénement.p_Titre     		= "Génocide Arménien"
+      	pclEvénement.p_Description 	= "Le génocide arménien a eu lieu d'avril 1915 à juillet 1916. Une grande partie de la population arménienne qui vivait sur le territoire actuel de la Turquie a péri au cours des déportations et massacres de grande ampleur."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/G%C3%A9nocide_arm%C3%A9nien"
+      	pclEvénement.p_Couleur	 	= JauneClair
+      	Ajoute(tabEvénements, pclEvénement)
+      		
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19170201"
+      	pclEvénement.p_DateFin   		= "19171001"
+      	pclEvénement.p_Titre     		= "Révolution russe"
+      	pclEvénement.p_Description 	= "La Révolution russe est l’ensemble des événements de 1917 ayant conduit en février au renversement spontané du régime tsariste de Russie, puis en octobre à l’installation préparée d’un régime « léniniste »."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/R%C3%A9volution_russe"
+      	pclEvénement.p_Couleur	 	= RougeClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19291028"
+      	pclEvénement.p_DateFin   		= "19291028"
+      	pclEvénement.p_Titre     		= "Crise de 1929"	
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Grande_d%C3%A9pression"
+      	pclEvénement.p_Couleur	 	= VertClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19360718"
+      	pclEvénement.p_DateFin  		= "19390401"
+      	pclEvénement.p_Titre    		= "Guerre d'Espagne"
+      	pclEvénement.p_Description 	= "La guerre d'Espagne (également souvent désignée sous le nom de guerre civile espagnole ou moins fréquemment de révolution espagnole), est un conflit qui opposa, en Espagne, le camp des « nationalistes » à celui des « républicains » réunissant, parfois avec de vives tensions, communistes, socialistes, républicains et anarchistes."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Guerre_civile_espagnole"
+      	pclEvénement.p_Couleur	 	= RougeClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19370707"
+      	pclEvénement.p_DateFin   		= "19450909"
+      	pclEvénement.p_Titre     		= "Seconde Guerre sino-japonaise"
+      	pclEvénement.p_Description 	= "La Seconde Guerre sino-japonaise fut une invasion massive de la partie orientale de la Chine par l'Armée impériale japonaise."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Guerre_sino-japonaise_(1937-1945)"
+      	pclEvénement.p_Couleur	 	= RougeClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19330130"
+      	pclEvénement.p_DateFin   		= "19330130"
+      	pclEvénement.p_Titre     		= "Hitler arrive au pouvoir"
+      	pclEvénement.p_Description 	= "Adolf Hitler devient Chancelier après deux entrevues avec Franz von Papen, à la tête d’un gouvernement de coalition chargé de mener une politique de redressement national."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Adolf_Hitler#L.E2.80.99accession_au_pouvoir_absolu"
+      	pclEvénement.p_Couleur	 	= JauneClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "19390903"
+      	pclEvénement.p_DateFin   		= "19450902"
+      	pclEvénement.p_Titre     		= "Seconde Guerre mondiale"
+      	pclEvénement.p_Description 	= "La Seconde Guerre mondiale (ou Deuxième Guerre mondiale) est un conflit armé à l'échelle planétaire qui dura de septembre 1939 à septembre 1945."
+      	pclEvénement.p_InfoEtendues 	= "http://fr.wikipedia.org/wiki/Seconde_Guerre_mondiale"
+      	pclEvénement.p_Couleur	 	= RougeClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	pclEvénement = allouer un TimelineEvénement 
+      	pclEvénement.p_DateDébut 		= "20210919"
+      	pclEvénement.p_DateFin   		= "20210926"
+      	pclEvénement.p_Titre     		= "Championnats du monde de cyclisme sur route"
+      	pclEvénement.p_Description 	= "Les championnats du monde de cyclisme sur route 2021, quatre-vingt-huitième édition des championnats du monde de cyclisme sur route, ont lieu du 19 au 26 septembre 2021 en Flandre, en Belgique1. La Belgique accueille pour la dixième fois les championnats du monde sur route, dix-neuf ans après Zolder en 2002. "
+      	pclEvénement.p_InfoEtendues 	= "https://fr.wikipedia.org/wiki/Championnats_du_monde_de_cyclisme_sur_route_2021"
+      	pclEvénement.p_Couleur	 	= RougeClair
+      	Ajoute(tabEvénements, pclEvénement)
+      	
+      	// Affecte les événements
+      	CMOD_TIMELINE_DOUBLE.CMOD_TIMELINE.TimelineContrôle.p_Evénements = tabEvénements
+     type : 458752
+   -
+     name : SurDoubleClic
+     procedure_id : 1954042130632189873
+     type_code : 14
+     code : |1-
+      // Résumé : Lors d'un double clic sur un événement
+      // Syntaxe :
+      //SurDoubleClic (<clEvénement> est TimelineEvénement)
+      //
+      // Paramètres :
+      //	clEvénement (TimelineEvénement) : Evénement cliqué
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure SurDoubleClic(clEvénement est un TimelineEvénement)
+      
+      	// Lance le lien correspondant stocké dans l'événément
+      	LanceAppliAssociée(clEvénement.p_InfoEtendues)
+     type : 458752
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACl921KmAot10hgJcgpc4Ckyu7aJD3N2AbgTRQYAu5WV4gA+UkyPMho9GoO/ZBeG1HuVXokwEtRKVtB8WtCpl9zhEvPlTlcFbvyw1K45BlZbK9bxdYFVgIP83CgO7Ag/45tOUSf1z2gF0SZbomr79KZ0cw5FuI=
+  original_name : FEN_Fenêtre1
+resources :
+ string_res :
+  identifier : 0x1148abc50c31c84d
+  internal_properties : CAAAAAgAAABVuuyAhBFwct+jLzq71qWqeils3KSYe3v0ZV1fb1EY/+tBYCBOoF6S/QhxZxaJoU2dEqi2Yg==
+custom_note :
+ internal_properties : CAAAAAgAAAC68/W0/adbG0nFCRhrE42B5HRnbDzVHaz86sSQyxlBk7I=
+associated_test :
+ name : TEST_Exemple.wxt
+rad :
+ internal_properties : CAAAAAgAAABoAN7PLpwJW3EiA7WVZdCA5EwrCA1rvutcDHooMWKe

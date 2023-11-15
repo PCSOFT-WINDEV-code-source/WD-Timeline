@@ -1,0 +1,2151 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : Timeline
+ major_version : 28
+ minor_version : 0
+ type : 4
+ description : ""
+ subtype : 0
+class :
+ identifier : 0x1b17bc8c003222d5
+ internal_properties : CAAAAAgAAAB2/vstTMCJbS/hlxjFxirSqKvCUuv8YxgpWyl7S3iA
+ code_elements :
+  type_code : 10
+  p_codes :
+   -
+     code : |1-
+      Timeline est une classe
+      
+      	prive
+      		m_sChamp					est une chaine											// Champ image associée à la timeline
+      		
+      		m_dhDateHeureSelect			est une dateheure
+      		m_dhDateHeureMin			est une dateheure										// Date minimale de la timeline
+      		m_dhDateHeureMax			est une dateheure										// Date maximale de la timeline
+      		m_nZoom						est un entier											// Zoom de la timeline
+      		
+      		m_nLargeurMax				est un entier sans signe								// Largeur maximale calculée sur la durée de la timeline
+      		m_nLargeurTimeLine			est un entier sans signe								// Largeur du champ 
+      		
+      		m_bDéplacement				est un booléen											// Flag indiquant si l'on est en déplacement
+      		m_nDernièresCoordonnées		est un entier											// Dernières coordonnées de la souris
+      		m_hDébutMouvement			est une heure											// Heure de sauvegarde du début du mouvement
+      		
+      		m_rDécalage					est un réel												// Décalage de la timeline
+      		m_rDécalagePrécédent		est un réel												// Précédent décalage de la timeline
+      		m_nDéplacementPrécédent		est un entier											// Précédent déplacement
+      		
+      		m_tabEvénements				est un tableau de TimelineEvénement dynamique			// Liste des événements de la timeline
+      		m_tabEvénementsVisibles		est un tableau de TimelineEvénement dynamique			// Liste des événements visibles de la timeline
+      		m_pclEvénementSurvolé		est un TimelineEvénement dynamique = null				// Evénement survolé
+      		m_taRectangles				est un tableau associatif de rect
+      		m_taRectanglesComplet		est un tableau associatif de rect
+      		
+      		m_dhDateHeureMinRéel		est une dateheure										// Date minimale réelle de la timeline
+      		m_dhDateHeureMaxRéel		est une dateheure										// Date maximale réelle de la timeline
+      
+      		m_dhDateHeureMinVisible		est une dateheure										// Date minimale réelle de la timeline
+      		m_dhDateHeureMaxVisible		est une dateheure										// Date maximale réelle de la timeline
+      		m_dhDateHeureMidVisible		est une dateheure										// Date réelle présente au centre de la timeline
+      		m_dhDateHeureMinAjustée		est une dateheure										// Date minimale ajustée de la timeline
+      		
+      		
+      		m_bDéplacementAutorisé		est un booléen											// Flag indiquant si on peut déplacer la timeline
+      		m_bDéplacementAutoAutorisé	est un booléen											// Flag indiquant si le déplacement automatique de la timeline est autorisé
+      		m_nLargeurIntervalles		est un entier											// Largeur des intervalles de la timeline
+      		
+      		m_pclTimelineSynchronisée	est une timeline dynamique								// Timeline synchronisée
+      		m_pclTimelineParente		est une timeline dynamique								// Timeline parente
+      		
+      		m_nCouleur					est un entier											// Couleur du texte
+      		m_nCouleurFond				est un entier											// Couleur de fond
+      		m_nCouleurSélection			est un entier											// Couleur de sélection
+      		m_polPolice					est une police											// Police du texte
+      		m_rZoomDist					est un reel												// Zoom de distance entre chaque élément
+      		m_sCallbackClic				est une chaine											// Callback de clic
+      		
+      	public constant	
+      		UID							est une chaine											// Identifiant unique de la timeline
+      		DC							est un entier											// DC de la timeline
+      Fin
+      
+      constant
+      
+      	HAUTEUR_ELT		= 3	
+      	HAUTEUR_FULLELT	= 32
+      FIN
+      
+      externe "winconst.wl"
+     type : 131072
+  procedures :
+   -
+     name : Constructeur
+     procedure_id : 1952236272973193941
+     type_code : 27
+     code : |1-
+      Procédure Constructeur(ChampModèle, *)
+      
+      	// Construction d'un UID
+      	UID = "TML" + NumériqueVersChaîne(DonneIdentifiant, "08X")
+      
+      	dDate est une date = datedujour
+      
+      	// Conserve le nom du champ
+      	m_sChamp = ChampModèle..nomcomplet
+      
+      	// Conserve la largeur
+      	m_nLargeurTimeLine = ChampModèle..largeur
+      	
+      	// Autorise le déplacement automatique
+      	m_bDéplacementAutoAutorisé = vrai
+      	
+      	// Pas de timeline parente
+      	m_pclTimelineParente = Null
+      	
+      	// Couleurs par défaut
+      	m_nCouleurFond 		= rvb(68, 68, 68)
+      	m_nCouleur     		= grisclair
+      	m_nCouleurSélection	= BleuPastel
+      	
+      	// Police par défaut
+      	m_polPolice			= PoliceCrée("Tahoma", 8, Normal, m_nCouleur)
+      	
+      	// Zoom de distance
+      	m_rZoomDist			= 1.0
+      		
+      	si MesParamètres..NbReçus = 2 alors
+      	
+      		// Crée la timeline synchronisée
+      		m_pclTimelineSynchronisée = allouer une timeline(MesParamètres[2])
+      		m_pclTimelineSynchronisée.p_TimelineParente = objet
+      	sinon
+      		
+      		// Pas de timeline synchronisée
+      		m_pclTimelineSynchronisée 	= Null	
+      	fin
+      		
+      	// Zoom par défaut ////////////////////////////////////////////////
+      	p_Zoom = zoomjours
+      	m_dhDateHeureSelect = "00000000000000000"
+      	
+      	// Timeline par défaut ////////////////////////////////////////////		
+      	
+      	// DateHeure minimale : le 1er Janvier 0h00, 90 années en arrière
+      	p_DateHeureMin = CréeDateHeure(dDate..Année - 90)
+      	// DateHeure maximale : le 31 Décembre 23h59, 10 années en avant
+      	p_DateHeureMax = CréeDateHeure(dDate..Année + 11)
+      	
+      	// Gère les événements
+      	evenement(SurRedimensionnement, m_sChamp, wm_size)
+      	evenement(SurDoubleClic, 		m_sChamp, WM_LBUTTONDBLCLK)
+      	evenement(SurDoubleClic, 		m_sChamp, WM_RBUTTONDBLCLK)
+      	evenement(SurBoutonEnfoncé, 	m_sChamp, WM_LBUTTONDOWN)
+      	evenement(SurBoutonEnfoncé, 	m_sChamp, WM_MBUTTONDOWN)
+      	evenement(SurBoutonRelâché, 	m_sChamp, WM_LBUTTONUP)
+      	evenement(SurBoutonRelâché, 	m_sChamp, WM_MBUTTONUP)
+      	evenement(SurSurvol, 			m_sChamp, WM_MOUSEMOVE)
+      	evenement(SurRouletteSouris, 	"*.*", 	  WM_MOUSEWHEEL)
+     type : 589824
+   -
+     name : Destructeur
+     procedure_id : 1952236272973259477
+     type_code : 28
+     code : |1+
+      Procédure Destructeur()
+      
+     type : 655360
+   -
+     name : SurRedimensionnement
+     procedure_id : 1952237630183174646
+     type_code : 12
+     group : 4
+     code : |1-
+      // Résumé : Exécuté lors du redimensionnement
+      Procédure PRIVEE SurRedimensionnement()
+      
+      	// Conserve la largeur
+      	m_nLargeurTimeLine = {m_sChamp, indchamp}..largeur
+      	
+      	// Actualise la timeline
+      	Affiche()
+     type : 458752
+   -
+     name : SurBoutonEnfoncé
+     procedure_id : 1952237956600830837
+     type_code : 12
+     group : 4
+     code : |1+
+      // Résumé : Gestion de l'événement WM_LBUTTONDOWN
+      // Syntaxe :
+      //SurBoutonEnfoncé ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure PRIVEE SurBoutonEnfoncé()
+      
+      	// Début du déplacement
+      	m_bDéplacement = Vrai
+      	
+      	// Conserve les coordonnées pour calculer le déplacement
+      	m_nDernièresCoordonnées = CurseurPos(cpEcran)
+      	
+      	// Conserve l'heure de début du mouvement
+      	m_hDébutMouvement = Maintenant
+      	
+      	// Conserve le décalage actuel
+      	m_rDécalagePrécédent = p_Décalage
+     type : 458752
+   -
+     name : SurBoutonRelâché
+     procedure_id : 1952237956600896483
+     type_code : 12
+     group : 4
+     code : |1-
+      // Résumé : Gestion de l'événement WM_LBUTTONUP
+      // Syntaxe :
+      //SurBoutonRelâché ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure PRIVEE SurBoutonRelâché()
+      
+      	// Restaure le curseur de la souris
+      	{m_sChamp, indChamp}..CurseurSouris = curFlèche
+      
+      	si m_bDéplacement alors
+      
+      		// Fin du déplacement
+      		m_bDéplacement = Faux
+      		
+      		rVitesse		est un réel
+      		nDéplacement	est un entier
+      		duDurée 		est une duree 
+      		hMaintenant	 	est une heure = maintenant
+      		
+      		// Calcule la distance parcourue
+      		nDéplacement = p_Décalage - m_rDécalagePrécédent
+      		
+      		si abs(nDéplacement) > 0 alors
+      	
+      			// Calcule la durée du déplacement
+      			duDurée = hMaintenant - m_hDébutMouvement
+      			
+      			// Calcule la vitesse résultante (v = d/t)
+      			rVitesse = nDéplacement / duDurée..EnSecondes
+      			
+      			// Heure départ pour la décélération
+      			m_hDébutMouvement = Maintenant
+      			
+      			BOUCLE
+      							
+      				// Récupère l'heure
+      				hMaintenant = Maintenant
+      				
+      				// Calcule la durée du déplacement
+      				duDurée = hMaintenant - m_hDébutMouvement
+      				
+      				// Nouvelle position
+      				p_Décalage += rVitesse * duDurée..EnSecondes
+      				
+      				// Si la nouvelle position fait que le bord droit du champ se retrouve
+      				// en deçà de la largeur du modèle
+      				SI p_Décalage + m_nLargeurMax <= m_nLargeurTimeLine ALORS		
+      					
+      					// Inverse la vitesse
+      					rVitesse = -rVitesse
+      					
+      					// Si la nouvelle position fait que le bord gauche du champ se retrouve
+      					// au delà de 0 (bord gauche du modèle)
+      				SINON SI p_Décalage >= 0 ALORS
+      					
+      					// Inverse la vitesse
+      					rVitesse = -rVitesse
+      				FIN
+      										
+      				// Décrémentation de la vitesse
+      				rVitesse = rVitesse / 1.5
+      		
+      				SI Abs(rVitesse) < 0.25 ALORS SORTIR
+      			FIN
+      		fin
+      	fin
+     type : 458752
+   -
+     name : SurDéplacement
+     procedure_id : 1952237956600962050
+     type_code : 12
+     group : 4
+     code : |1-
+      // Résumé : Gestion de l'événement WM_MOUSEMOVE (déplacement)
+      // Syntaxe :
+      //SurDéplacement ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure PRIVEE SurDéplacement()
+      
+      	// Si on est en cours de déplacement
+      	SI m_bDéplacement = Vrai ALORS
+      		
+      		// Récupère les nouvelles coordonnées
+      		nCoordonnées est un entier = curseurpos(cpEcran)
+      		
+      		// Calcule le déplacement
+      		nDéplacement est un entier = PoidsFaible(nCoordonnées) - PoidsFaible(m_nDernièresCoordonnées)
+      		
+      		m_hDébutMouvement = Maintenant
+      		m_rDécalagePrécédent = p_Décalage
+      		
+      		si nDéplacement <> 0 alors
+      		
+      			// Récupère la position actuelle
+      			nNouvellePos est un entier = p_Décalage
+      			
+      			// Calcule la nouvelle position
+      			nNouvellePos += nDéplacement
+      						
+      			// Si la nouvelle position fait que le bord droit du champ se retrouve
+      			// en deçà de la largeur du modèle, on recalcule la position pour que le champ
+      			// soit positionné correctement
+      			SI nNouvellePos + m_nLargeurMax <= m_nLargeurTimeLine ALORS		
+      				
+      				// On doit rester à droite
+      				nNouvellePos = m_nLargeurTimeLine - m_nLargeurMax
+      				
+      				// Indique qu'on ne peut pas aller plus loin
+      				{m_sChamp, indChamp}..CurseurSouris = curInterdit
+      				
+      				// Si la nouvelle position fait que le bord gauche du champ se retrouve
+      				// au delà de 0 (bord gauche du modèle), on recalcule la position pour que le champ
+      				// soit positionné correctement
+      			SINON SI nNouvellePos >= 0 ALORS
+      				
+      				// On doit rester à gauche
+      				nNouvellePos = 0
+      				
+      				// Indique qu'on ne peut pas aller plus loin
+      				{m_sChamp, indChamp}..CurseurSouris = curInterdit
+      				
+      				// La nouvelle position est correcte		
+      			SINON
+      				
+      				// Indique qu'on peut continuer
+      				{m_sChamp, indChamp}..CurseurSouris = curFlèche
+      			FIN
+      			
+      			// Conserve la nouvelle position
+      			p_Décalage = nNouvellePos
+      		fin
+      		
+      		// Sauvegarde la déplacement
+      		m_nDéplacementPrécédent = nDéplacement
+      		
+      		// Sauvegarde les nouvelles coordonnées
+      		m_nDernièresCoordonnées = nCoordonnées	
+      	FIN
+     type : 458752
+   -
+     name : SurSurvol
+     procedure_id : 1952237956601027617
+     type_code : 12
+     group : 4
+     code : |1-
+      // Résumé : Gestion de l'événement WM_MOUSEMOVE (survol)
+      // Syntaxe :
+      //SurSurvol ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure PRIVEE SurSurvol()
+      
+      	// Si on est en cours de déplacement
+      	SI m_bDéplacement ALORS
+      		
+      		si m_bDéplacementAutorisé alors
+      		
+      			// Traitement du déplacement	
+      			SurDéplacement()
+      		fin
+      		
+      		retour	
+      	FIN
+      
+      	nSx, nSy 	sont des entiers
+      	pclEvt	 	est un TimelineEvénement dynamique
+      	stRect	 	est un rect
+      	stRectCmp 	est un rect
+      	stRectOld	est un rect
+      	bSurvol	 	est un booléen
+      	nCouleur 	est un entier
+      	bAffichageComplet est un booléen
+      	
+      	// Récupère les coordonnées de la souris
+      	nSx = sourisposx
+      	nSy = sourisposY
+      	
+      	// Détermine si on peut afficher les cases complètes
+      	bAffichageComplet = ({m_sChamp, indChamp}..Hauteur > HAUTEUR_FULLELT * 3)
+      
+      	// Pour chaque événement visible
+      	pour tout pclEvt de m_tabEvénementsVisibles
+      		
+      		// Récupère le rectangle de l'événement
+      		si m_taRectangles[pclEvt.UID] <> null alors
+      			
+      			stRect = m_taRectangles[pclEvt.uid]
+      			
+      			// Si on peut afficher en complet
+      			si bAffichageComplet ALORS
+      				
+      				// Redéfinit le rectangle
+      				stRect.y2 = stRect.y1 + HAUTEUR_ELT
+      				
+      				// Et récupère le rectangle du cartouche
+      				si m_taRectanglesComplet[pclEvt.UID] <> null alors
+      					stRectCmp = m_taRectanglesComplet[pclEvt.UID]
+      				sinon
+      					VariableRAZ(stRectCmp)
+      				fin
+      			FIN
+      			
+      			// Vérifie si la souris survole cet événement
+      			si stRect.y1 <= nSy <= stRect.y2 _ou_ stRectCmp.y1 <= nSy <= stRectCmp.y2 ALORS
+      				SI stRect.x1 <= nSx <= stRect.x2 _ou_ stRectCmp.x1 <= nSx <= stRectCmp.x2 ALORS
+      				
+      					// On survole un événement
+      					bSurvol = vrai
+      					
+      					// Si l'événement survolé est différent
+      					si (m_pclEvénementSurvolé <> null _et_ m_pclEvénementSurvolé.uid <> pclEvt.uid) _ou_ m_pclEvénementSurvolé = null alors
+      						
+      						// Modifie la  bulle et le curseur
+      						{m_sChamp, indchamp}..Bulle = [gpolicegras(vrai)] + pclEvt.p_Titre + [rc] + gPoliceGras(Faux) + pclEvt.p_Description
+      						{m_sChamp, indChamp}..CurseurSouris = curMainSystème
+      						
+      						dDébutDessin(m_sChamp, dSansEffacer)
+      						
+      						// Si l'événement précédent n'est pas nul
+      						si m_pclEvénementSurvolé <> Null ALORS
+      							
+      							// Récupère le rectangle
+      							stRectOld = m_taRectangles[m_pclEvénementSurvolé.UID]
+      							
+      							SI bAffichageComplet ALORS
+      								stRectOld.y2 = stRectOld.y1 + HAUTEUR_ELT
+      							FIN
+      							
+      							// On redessine l'événement
+      							dRectangle(stRectOld.x1, stRectOld.y1, stRectOld.x2, stRectOld.y2, m_pclEvénementSurvolé.p_Couleur, m_pclEvénementSurvolé.p_Couleur)	
+      						FIN
+      						
+      						// Récupère la couleur de l'événement
+      						nCouleur = pclEvt.p_Couleur
+      						
+      						// Assombrit la couleur
+      						nCouleur = tsl(couleurteinte(nCouleur), CouleurSaturation(nCouleur), CouleurLuminosité(nCouleur) / 2)
+      						
+      						// Point de l'événement
+      						dRectangle(stRect.x1, stRect.y1, stRect.x2, stRect.y2, nCouleur, pclEvt.p_Couleur)		
+      					fin
+      	
+      					// Conserve l'événement survolé
+      					m_pclEvénementSurvolé = pclEvt
+      					
+      					sortir
+      				fin
+      			FIN		
+      		fin
+      	FIN
+      	
+      	// Si aucun événement n'est survolé
+      	si bSurvol = faux ALORS
+      		
+      		// Si l'événement précédent n'est pas nul
+      		SI m_pclEvénementSurvolé <> Null ALORS
+      			
+      			// Récupère le rectangle
+      			stRectOld = m_taRectangles[m_pclEvénementSurvolé.UID]
+      			
+      			SI bAffichageComplet ALORS
+      				stRectOld.y2 = stRectOld.y1 + HAUTEUR_ELT
+      			FIN
+      			
+      			// On redessine l'événement
+      			dRectangle(stRectOld.x1, stRectOld.y1, stRectOld.x2, stRectOld.y2, m_pclEvénementSurvolé.p_Couleur, m_pclEvénementSurvolé.p_Couleur)	
+      		FIN
+      		
+      		m_pclEvénementSurvolé = null
+      		
+      		// Restaure la bulle et le curseur
+      		{m_sChamp, indChamp}..Bulle = ""
+      		{m_sChamp, indChamp}..CurseurSouris = curFlèche
+      	FIN
+     type : 458752
+   -
+     name : Affiche
+     procedure_id : 1952238386098381673
+     type_code : 12
+     code : |1-
+      // Résumé : Actualise l'affichage de la timeline
+      // Syntaxe :
+      //Affiche ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure Affiche()
+      
+      	externe LIB_TEMPLATE
+      	
+      	nNbEléments			est un entier											// Nombre d'éléments total
+      	duDurée				est une duree											// Durée d'affichage							
+      	dhDate				est une dateheure			
+      	nX					est un reel		
+      	nLargeurTex			est un entier											// Largeur du texte
+      	nLargeurEvt 		est un entier											// Largeur d'un événement
+      	sTexte				est une chaine
+      	polPolice			est une police											// Police du texte
+      	nLargeurElt			est un entier											// Largeur d'un élément						
+      	tabEvt				est un tableau de TimelineEvénement dynamique			// Evénements affichés
+      	pclEvt				est un TimelineEvénement dynamique		
+      	nDecalageV			est un entier	
+      	stRect				est un rect
+      	stRectComplet		est un rect
+      	nIndice1er			est un entier											// Indice du premier élément affiché
+      	nIndiceDer			est un entier											// Indice du dernier élément affiché
+      	bAffichageComplet 	est un booléen											// Flag indiquant si on peut afficher des cartouches
+      	nCouleur			est un entier
+      	nCouleurEclaircie 	est un entier
+      		
+      	// Durée d'affichage
+      	duDurée = m_dhDateHeureMax - m_dhDateHeureMin
+      	
+      	// En fonction du zoom
+      	selon p_Zoom
+      		
+      		// Décades
+      		cas zoomDécades
+      			
+      			nNbEléments = (m_dhDateHeureMax..Année - m_dhDateHeureMin..Année) / 10
+      			nLargeurElt = 96 * m_rZoomDist
+      			
+      		// Années
+      		cas zoomAnnées
+      			
+      			nNbEléments = m_dhDateHeureMax..Année - m_dhDateHeureMin..Année
+      			nLargeurElt = 72 * m_rZoomDist
+      			
+      		// Mois
+      		cas zoomMois
+      			
+      			nNbEléments = m_dhDateHeureMax..Année * 12 + m_dhDateHeureMax..mois - m_dhDateHeureMin..Année * 12 - m_dhDateHeureMin..Mois
+      			nLargeurElt = 72 * m_rZoomDist
+      			
+      		// Jours
+      		cas zoomJours
+      			
+      			nNbEléments = duDurée..EnJours
+      			nLargeurElt = 72 * m_rZoomDist
+      			
+      		// Heures
+      		cas zoomHeures
+      			
+      			nNbEléments = duDurée..enheures
+      			nLargeurElt = 72 * m_rZoomDist
+      			
+      		// 10x minutes
+      		cas zoomMinutes10
+      			
+      			nNbEléments = duDurée..EnMinutes * 10
+      			nLargeurElt = 72 * m_rZoomDist
+      			
+      		// Minutes
+      		cas zoomMinutes
+      			
+      			nNbEléments = duDurée..EnMinutes
+      			nLargeurElt = 72 * m_rZoomDist
+      	FIN
+      	
+      	// Largeur maximale de la timeline
+      	m_nLargeurMax = nLargeurElt * nNbEléments
+      	
+      	// Largeur des intervalles
+      	m_nLargeurIntervalles = nLargeurElt
+      	
+      	// Couleur de fond
+      	{m_sChamp, indchamp}..Couleurfond = m_nCouleurFond
+      	
+      	// Couleurs du texte
+      	nCouleur = m_nCouleur
+      	nCouleurEclaircie = tsl(couleurteinte(nCouleur), couleursaturation(nCouleur), max(100, CouleurLuminosité(nCouleur) + 25))
+      	
+      	// Début du dessin
+      	dDébutDessin(m_sChamp, dsansEffacer)
+      	DC = dDébutDessin(m_sChamp, dEffacer)
+      
+      	dRectangle(0, 0, {m_sChamp, indChamp}..Largeur, {m_sChamp, indChamp}..Hauteur, m_nCouleurFond, m_nCouleurFond)
+      
+      	// Aucun événement survolé	
+      	m_pclEvénementSurvolé = Null
+      	
+      	// Crée la police
+      	polPolice = m_polPolice
+      	polPolice..Couleur = m_ncouleur
+      	LIB_TEMPLATE..police = polPolice
+      	
+      	// Décalage de départ
+      	nX = arrondi(m_bDéplacementAutorisé ? p_Décalage SINON 0)
+      	
+      	// Première DateHeure affichée
+      	m_dhDateHeureMinVisible = PositionVersDate(Abs(nX) / nLargeurElt)
+      	m_dhDateHeureMinAjustée = PositionVersDate(0)
+      	
+      	// Ajustement
+      	DateAjuste(m_dhDateHeureMinVisible)
+      	DateAjuste(m_dhDateHeureMinAjustée)
+      	
+      	// Dernière DateHeure affichée
+      	m_dhDateHeureMaxVisible = PositionVersDate((Abs(nX) + m_nLargeurTimeLine) / nLargeurElt)
+      
+      	// Ajustement
+      	DateAjuste(m_dhDateHeureMaxVisible)
+      
+      	// Date et heure réelle (bornes)	
+      	m_dhDateHeureMinRéel 	= PositionVersDate(0, Vrai)
+      	m_dhDateHeureMaxRéel 	= PositionVersDate(m_nLargeurTimeLine, Vrai)
+      		
+      	// Répercute les modifications sur la timeline synchronisée
+      	si m_pclTimelineSynchronisée <> null alors
+      	
+      		// On doit modifier les dates pour qu'elles correspondent
+      		m_pclTimelineSynchronisée.p_DateHeureMin = PositionVersDate(0)
+      		m_pclTimelineSynchronisée.p_DateHeureMax = p_dateheuremax
+      		
+      		// Zoom inférieur
+      		m_pclTimelineSynchronisée.p_Zoom = min(7, p_zoom + 1)
+      	fin
+      	
+      	// Si la plage de date est inférieure à la page de date affichable
+      	si m_dhDateHeureMaxRéel > m_dhDateHeureMax ALORS
+      		
+      		// On empêche le déplacement
+      		m_bDéplacementAutorisé = faux
+      	sinon
+      		
+      		// Autorise le déplacement
+      		m_bDéplacementAutorisé = vrai
+      	FIN
+      	
+      	// Récupère les événements passées entre ces deux dates
+      	tabEvt = ListeEvénements(m_dhDateHeureMinVisible, m_dhDateHeureMaxVisible)
+      	
+      	// Premier indice affichable
+      	nIndice1er = DateVersPosition(m_dhDateHeureMinVisible)
+      	nIndiceDer = DateVersPosition(m_dhDateHeureMaxVisible)
+      	nIndiceDer = (nIndice1er + nIndiceDer + 1)
+      	
+      	// Date moyenne
+      	m_dhDateHeureMidVisible = positionversdate((nIndiceDer - nIndice1er) / 2)
+      	
+      	// Sélectionne la police
+      	dPolice(polPolice)
+      				
+      	// Pour chaque "date" visible
+      	pour i = nIndice1er _a_ nIndiceDer
+      				
+      		SI PAS (nX + nLargeurElt < 0 _OU_ nX + p_Décalage > m_nLargeurTimeLine) ALORS
+      		
+      			// Récupère la date de l'élément courant
+      			dhDate = PositionVersDate(i - nIndice1er)	
+      						
+      			// En fonction du zoom actuelle
+      			selon p_Zoom
+      				
+      				// Décades
+      				cas zoomDécades
+      					
+      					// On affiche la décade
+      					sTexte = dhDate..Année
+      			
+      				// Années
+      				cas zoomAnnées
+      					
+      					// On affiche l'année
+      					sTexte = dhDate..Année
+      	
+      				// Mois
+      				cas zoomMois
+      					
+      					// On affiche le mois et l'année
+      					sTexte = DateVersChaîne(dhDate..PartieDate, "MMMM") + rc +  DateVersChaîne(dhDate..PartieDate, "AAAA")
+      					
+      				// Jours
+      				cas zoomJours
+      					
+      					// On affiche la date
+      					SI m_pclTimelineParente = Null ALORS
+      						sTexte = DateVersJourEnLettre(dhDate..partiedate) + rc + DateVersChaîne(dhDate..PartieDate, "JJ MMM AAAA")
+      					sinon
+      						sTexte = DateVersChaîne(dhDate..PartieDate, "JJ") + " " + DateVersJourEnLettre(dhDate..PartieDate)
+      					fin
+      				
+      				// Heures
+      				cas zoomHeures
+      					
+      					// On affiche la date et l'heure entière
+      					SI m_pclTimelineParente = Null ALORS
+      						sTexte = DateVersChaîne(dhDate..PartieDate, "JJ MMM AAAA") + rc + HeureVersChaîne(dhDate..PartieHeure, "HH:MM")
+      					sinon
+      						sTexte = HeureVersChaîne(dhDate..PartieHeure, "HH:MM")
+      					fin
+      				
+      				// Dizaines de minutes
+      				cas zoomMinutes10
+      					
+      					// On affiche la date et l'heure à la dizaine de minutes près
+      					SI m_pclTimelineParente = Null ALORS
+      						sTexte = DateVersChaîne(dhDate..PartieDate, "JJ MMM AAAA") + RC + heureverschaine(dhDate..partieheure, "HH:MM")
+      					sinon
+      						sTexte = HeureVersChaîne(dhDate..PartieHeure, "HH:MM")
+      					fin
+      				
+      				// Minutes
+      				CAS zoomMinutes
+      					
+      					// On affiche la date et l'heure
+      					SI m_pclTimelineParente = Null ALORS
+      						sTexte = DateVersChaîne(dhDate..PartieDate, "JJ MMM AAAA") + RC + HeureVersChaîne(dhDate..PartieHeure, "HH:MM")
+      					sinon
+      						sTexte = HeureVersChaîne(dhDate..PartieHeure, "HH:MM")
+      					fin
+      			FIN
+      			
+      			// Ligne verticale dégradée
+      			dRectangleDégradé(nX, 0, nX + 1, {m_sChamp, indChamp}..Hauteur, m_nCouleurFond, nCouleur, 90)
+      			
+      			// Si le texte est sur deux lignes
+      			si ChaîneOccurrence(sTexte, rc) > 0 alors
+      				
+      				// Affiche les deux lignes
+      				dTexteAvancé(DC, (nX), ({m_sChamp, indChamp}..Hauteur - 28), (nX + nLargeurElt), ({m_sChamp, indChamp}..Hauteur - 14), ExtraitChaîne(sTexte, 1, RC), DT_CENTER + DT_VCENTER + DT_EDITCONTROL, nCouleur)
+      				dTexteAvancé(DC, (nX), ({m_sChamp, indChamp}..Hauteur - 14), (nX + nLargeurElt), ({m_sChamp, indChamp}..Hauteur), ExtraitChaîne(sTexte, 2, RC), DT_CENTER + DT_VCENTER + DT_EDITCONTROL, nCouleurEclaircie)
+      				nDecalageV = 32				
+      			sinon
+      				
+      				// Affiche sur une ligne
+      				dTexteAvancé(dc, (nX), ({m_sChamp, indChamp}..Hauteur - 14), (nX + nLargeurElt), ({m_sChamp, indChamp}..Hauteur), sTexte, dt_center + dt_vcenter + DT_EDITCONTROL, nCouleur)
+      				nDecalageV = 18
+      			FIN
+      			
+      		fin
+      		
+      		// Prochaine position
+      		nX += nLargeurElt
+      		
+      		// Ajuste la largeur totale
+      		si m_nLargeurMax < nX alors
+      			m_nLargeurMax = nX
+      		FIN
+      	FIN
+      
+      	// Point de départ
+      	nX = (m_bDéplacementAutorisé ? p_Décalage SINON 0)
+      
+      	// Si une date a été sélectionnée
+      	SI m_dhDateHeureSelect <> "00000000000000000" ALORS
+      		dhDate = m_dhDateHeureSelect
+      	sinon 
+      		
+      		// Si aucune date n'a été sélectionnée, qu'on ne peut pas déplacer la timeline et qu'on possède une timeline synchronisée
+      		SI m_bDéplacementAutorisé = Faux _ET_ m_pclTimelineSynchronisée <> Null ALORS
+      			
+      			// On récupère la première date visible de la timeline synchronisée
+      			dhDate = m_pclTimelineSynchronisée.PositionVersDate(-m_pclTimelineSynchronisée.p_Décalage, vrai)
+      		sinon
+      			// Aujourd'hui
+      			dhDate = DateDuJour + Maintenant		
+      		FIN		
+      	FIN
+      	
+      	nX += DateVersPosition(dhDate, vrai)
+      	
+      	SI PAS (nX + nLargeurElt < 0 _OU_ nX + p_Décalage > m_nLargeurTimeLine) ALORS
+      		dRectangleDégradé(nX, 0, nX + 1, {m_sChamp, indChamp}..Hauteur - nDecalageV, m_nCouleurFond, m_nCouleurSélection, 90)
+      	fin
+      		
+      	// Détermine si on peut afficher les cases complètes
+      	bAffichageComplet = ({m_sChamp, indChamp}..Hauteur > HAUTEUR_FULLELT * 3)
+      	
+      	// Point de départ
+      	nX = (m_bDéplacementAutorisé ? p_Décalage sinon 0)
+      	
+      	Trie(tabEvt, ttMembre, "+m_dhDateDébut")
+      			
+      	// Pour chaque événement à afficher
+      	pour tout pclEvt de tabEvt
+      		
+      		// Largeur de l'événement en pixels
+      		nLargeurEvt = (max(3.0, DuréeVersPixels(pclEvt.p_DateDébut, pclEvt.p_DateFin)))
+      		nLargeurElt = 256
+      		
+      		// Rectangle de l'événement
+      		stRect.x1 = nX + (DateVersPosition(pclEvt.p_DateDébut, Vrai))
+      				
+      		si bAffichageComplet alors
+      			
+      			stRect.y1 = {m_sChamp, indChamp}..Hauteur - nDecalageV - HAUTEUR_FULLELT - HAUTEUR_ELT * 2
+      			stRect.y2 = stRect.y1 + HAUTEUR_FULLELT	/ (pclEvt.p_Titre = "" ? 1.9 sinon 1)		
+      			
+      			// Calcule le rectangle du cartouche
+      			stRectComplet.x1 = stRect.x1 + HAUTEUR_ELT * 2 + 4
+      			stRectComplet.x2 = stRect.x1 + nLargeurElt + HAUTEUR_ELT * 2 - 4
+      			stRectComplet.y1 = stRect.y1 + HAUTEUR_ELT * 2 + 2
+      			stRectComplet.y2 = stRect.y2 + HAUTEUR_ELT * 2 - 2
+      			
+      			// Police
+      			dpolice(polPolice)
+      			
+      			// Largeur du texte
+      			dTexteAvancé(dc, stRectComplet.x1, stRectComplet.y1, stRectComplet.x2, stRectComplet.y2, (pclEvt.p_Titre + repete(" ", taille(pclEvt.p_Titre) / 3) + [rc] + pclEvt.p_Description), dt_top + dt_left + DT_CALCRECT + DT_EDITCONTROL)
+      			nLargeurTex = min(256, stRectComplet.x2 - stRectComplet.x1)
+      			nLargeurElt = nLargeurTex + 12				
+      						
+      			// Recherche si un autre événement se trouve à la position
+      			TANTQUE DétectionSuperposition(stRect, tabEvt, pclEvt)
+      				
+      				stRect.y1 -= HAUTEUR_FULLELT + HAUTEUR_FULLELT / 2
+      				stRect.y2 -= HAUTEUR_FULLELT + HAUTEUR_FULLELT / 2
+      			FIN
+      			
+      			stRect.x2 = stRect.x1 + nLargeurEvt
+      			
+      		sinon
+      			
+      			stRect.x2 = stRect.x1 + nLargeurEvt
+      			
+      			stRect.y1 = {m_sChamp, indChamp}..Hauteur - nDecalageV - HAUTEUR_ELT
+      			stRect.y2 = {m_sChamp, indChamp}..Hauteur - nDecalageV
+      			
+      			// Recherche si un autre événement se trouve à la position
+      			TANTQUE DétectionSuperposition(stRect, tabEvt, pclEvt)
+      				
+      				stRect.y1 -= HAUTEUR_ELT + HAUTEUR_ELT / 2
+      				stRect.y2 -= HAUTEUR_ELT + HAUTEUR_ELT / 2
+      			FIN
+      		FIN
+      						
+      		// Transmet le rectangle
+      		m_taRectangles[pclEvt.uid] = stRect 
+      		
+      		// Si le cadre de l'événement dépasse la timeline, on abandonne son dessin
+      		SI stRect.y2 < 0 ALORS CONTINUER
+      		
+      		// En mode affichage complet ?
+      		SI bAffichageComplet ALORS
+      			
+      			// Petit rectangle
+      			dRectangle(stRect.x1, stRect.y1, stRect.x2, stRect.y1 + HAUTEUR_ELT, pclEvt.p_Couleur, pclEvt.p_Couleur)
+      	
+      			// Calcule le rectangle du cartouche
+      			stRectComplet.x1 = stRect.x1 + HAUTEUR_ELT * 2
+      			stRectComplet.x2 = stRect.x1 + nLargeurElt + HAUTEUR_ELT * 2
+      			stRectComplet.y1 = stRect.y1 + HAUTEUR_ELT * 2
+      			stRectComplet.y2 = stRect.y2 + HAUTEUR_ELT * 2
+      				
+      			// Si un titre ou une description a été fournie
+      			si pclEvt.p_Description <> "" _ou_ pclEvt.p_Titre <> "" alors
+      			
+      				// Conserve le rectangle du cartouche
+      				m_taRectanglesComplet[pclEvt.uid] = stRectComplet
+      	
+      				// Cartouche
+      				dRectangle(stRectComplet.x1 , stRectComplet.y1, stRectComplet.x2, stRectComplet.y2, m_nCouleurFond, GrisFoncé)	
+      				
+      				// Affiche le titre si il existe
+      				si pclEvt.p_Titre <> "" alors
+      				
+      					// Police grasse
+      					polPolice..Gras = vrai
+      					polPolice..Italique = faux
+      					dPolice(polPolice)	
+      					
+      					// Affiche le titre
+      					dTexteAvancé(DC, stRectComplet.x1 + 4, stRectComplet.y1 + 2, stRectComplet.x2 - 4, stRectComplet.y1 + 14, (pclEvt.p_Titre), dt_top + dt_left + DT_SINGLELINE + DT_MODIFYSTRING + DT_END_ELLIPSIS + DT_EDITCONTROL)					
+      				fin
+      							
+      				si pclEvt.p_Description <> "" alors
+      											
+      					// Police de la description
+      					polPolice..Gras = Faux			
+      					polPolice..Italique = vrai			
+      					dPolice(polPolice)	
+      										
+      					// Affiche la description
+      					dTexteAvancé(DC, stRectComplet.x1 + 4, stRectComplet.y1 + 2 + (pclEvt.p_Titre <> "" ? 14 sinon 0), stRectComplet.x2 - 4, stRectComplet.y2 - 2, (pclEvt.p_Description), DT_TOP + DT_LEFT + DT_MODIFYSTRING + DT_END_ELLIPSIS + DT_EDITCONTROL)
+      				fin
+      			fin
+      		sinon
+      			
+      			// Petit rectangle
+      			dRectangle(stRect.x1, stRect.y1, stRect.x2, stRect.y2, pclEvt.p_Couleur, pclEvt.p_Couleur)		
+      		FIN
+      				
+      	FIN
+      	
+      	// Conserve la liste des événements visibles
+      	m_tabEvénementsVisibles = tabEvt	
+      	
+      	// Si on a une timeline synchronisée
+      	si m_pclTimelineSynchronisée <> null ALORS
+      		
+      		// Affecte les mêmes événements à la timeline synchronisée
+      		m_pclTimelineSynchronisée.p_Evénements = p_Evénements
+      		
+      		// Date et heure sélectionnée
+      		m_pclTimelineSynchronisée.p_DateHeureSelect = m_dhDateHeureSelect
+      		
+      		// Couleurs
+      		m_pclTimelineSynchronisée.p_Couleur = m_nCouleur
+      		m_pclTimelineSynchronisée.p_CouleurFond = m_nCouleurFond
+      		
+      		// Police
+      		m_pclTimelineSynchronisée.p_Police = m_polPolice
+      		
+      		// Zoom de distance
+      		m_pclTimelineSynchronisée.p_ZoomDistance = m_rZoomDist
+      		
+      		// Callback
+      		m_pclTimelineSynchronisée.p_Callback = p_callback
+      		
+      		// Etat
+      		m_pclTimelineSynchronisée.p_Etat = (m_bDéplacementAutorisé ? actif sinon inactif)
+      		
+      		// Affiche la timeline synchronisée
+      		m_pclTimelineSynchronisée.Affiche()
+      	FIN
+     type : 458752
+   -
+     name : DateVersPosition
+     procedure_id : 1952238386098447303
+     type_code : 12
+     code : |1-
+      // Résumé : Renvoie la position (indice ou position réelle) d'une DateHeure
+      // Syntaxe :
+      //[ <Résultat> = ] DateVersPosition (<dhDate> est dateheure [, <bPrécise> est booléen])
+      //
+      // Paramètres :
+      //	dhDate (dateheure) : DateHeure dont la position doit être renvoyée
+      //	bPrécise (booléen - valeur par défaut=0) : Faux (par défaut) si on doit renvoyer l'indice, Vrai si on doit renvoyer la position réelle
+      // Valeur de retour :
+      // 	réel :  Position de la DateHeure
+      //
+      Procédure DateVersPosition(local dhDate est une dateheure, local bPrécise est un booléen = faux)
+      
+      	rPosition	est un reel
+      	duDurée		est une duree
+      	dhDébut		est une dateheure
+      	
+      	// Position précise en pixel
+      	si bPrécise ALORS
+      
+      		// On se base sur la date minimale ajustée
+      		dhDébut		= m_dhDateHeureMinAjustée
+      		
+      		renvoyer DuréeVersPixels(dhDébut, dhDate)
+      	
+      	// Index correspondant
+      	sinon
+      
+      		dhDébut		= m_dhDateHeureMin
+      		
+      		// Durée effective
+      		duDurée		= dhDate - dhDébut
+      	
+      		// En fonction du zoom
+      		selon p_Zoom
+      			cas zoomDécades			
+      				rPosition = dhDate..Année / 10 - dhDébut..Année / 10 						
+      				
+      			cas zoomAnnées
+      				rPosition = dhDate..Année - dhDébut..Année			
+      				
+      			cas zoomMois
+      				rPosition = dhDate..Année * 12 + dhDate..Mois - dhDébut..Année * 12 - dhDébut..Mois
+      				
+      			CAS zoomJours
+      				rPosition = duDurée..EnJours - 1
+      							
+      			cas zoomHeures
+      				rPosition = (duDurée..EnMinutes - 1) / 60
+      							
+      			cas zoomMinutes10
+      				rPosition = (duDurée..EnMinutes - 1) / 10
+      							
+      			cas zoomMinutes 
+      				rPosition = (duDurée..EnMinutes	- 1)
+      		FIn
+      	fin
+      	
+      renvoyer rPosition
+     type : 458752
+   -
+     name : DuréeVersPixels
+     procedure_id : 1952238386098512901
+     type_code : 12
+     code : |1-
+      // Résumé : Détermine la longueur en pixels d'une durée
+      // Syntaxe :
+      //[ <Résultat> = ] DuréeVersPixels (<dhDébut> est dateheure, <dhFin> est dateheure)
+      //
+      // Paramètres :
+      //	dhDébut (dateheure) : DateHeure de début
+      //	dhFin (dateheure) : DateHeure de fin
+      // Valeur de retour :
+      // 	réel :  Longueur en pixels
+      //
+      Procédure PRIVEE DuréeVersPixels(LOCAL dhDébut est une DateHeure, LOCAL dhFin est une DateHeure)
+      
+      	rPixels	est un reel
+      	duDurée	est une duree
+      	
+      	// Durée de l'événement
+      	duDurée = dhFin - dhDébut
+      			
+      	// En fonction du zoom
+      	selon p_Zoom
+      		
+      		// Décades
+      		cas zoomDécades			
+      			rPixels = ((duDurée..EnJours / 365) / 10) * m_nLargeurIntervalles
+      		
+      		// Années
+      		CAS zoomAnnées			
+      			rPixels = (duDurée..EnJours / 365) * m_nLargeurIntervalles
+      		
+      		// Mois
+      		CAS zoomMois			
+      			rPixels = ((duDurée..EnJours / 365) * 12) * m_nLargeurIntervalles
+      			
+      		// Jours
+      		CAS zoomjours			
+      			rPixels = duDurée..EnJours * m_nLargeurIntervalles
+      			
+      		// Heures
+      		CAS zoomHeures
+      			rPixels = duDurée..Enheures * m_nLargeurIntervalles
+      		
+      		// 10x minutes
+      		CAS zoomMinutes10
+      			rPixels = (duDurée..EnMinutes / 10) * m_nLargeurIntervalles
+      
+      		// Minutes
+      		CAS zoomMinutes
+      			rPixels = duDurée..EnMinutes * m_nLargeurIntervalles
+      			
+      	FIN
+      	
+      renvoyer rPixels
+     type : 458752
+   -
+     name : DétectionSuperposition
+     procedure_id : 1952238386098578500
+     type_code : 12
+     group : 2
+     code : |1-
+      // Résumé : Détecte une superposition d'affichage entre plusieurs événements
+      // Syntaxe :
+      //[ <Résultat> = ] DétectionSuperposition (<stRect> est RECT, <tabEvt> est tableau, <pclEvtCourant> est TimelineEvénement dynamique)
+      //
+      // Paramètres :
+      //	stRect (RECT) : Rectangle de l'événement à comparer
+      //	tabEvt (tableau) : Liste des événements sur lesquels la comparaison doit s'effectuer
+      //	pclEvtCourant (TimelineEvénement dynamique) : Evénement à comparer
+      // Valeur de retour :
+      // 	booléen :    Vrai si l'événement à comparer se superpose avec un autre événement, Faux sinon
+      //
+      Procédure PRIVÉE DétectionSuperposition(local stRect est un rect, tabEvt est un tableau de * TimelineEvénement dynamique, pclEvtCourant est un TimelineEvénement dynamique)
+      
+      	stRectEvt est un rect
+      	stRectCmp est un rect
+      	pclEvt	  est un TimelineEvénement dynamique
+      	
+      	si stRect.x2 < stRect.x1 alors
+      		stRect.x1 <=> stRect.x2
+      	FIN
+      		
+      	SI stRect.y2 < stRect.y1 ALORS
+      		stRect.y1 <=> stRect.y2
+      	FIN
+      	
+      	trie(tabEvt, ttMembre, "+m_dhDateDébut")
+      	
+      	pour chaque pclEvt de tabEvt
+      		
+      		// Si ce n'est pas l'objet courant
+      		si pclEvt.UID <> pclEvtCourant.UID ALORS
+      
+      			// -> seulement si l'événement est plus anciens que l'événement courant
+      			SI pclEvt.p_DateDébut <= pclEvtCourant.p_DateDébut _ou_ pclEvtCourant.p_DateDébut <= pclEvt.p_DateFin <= pclEvtCourant.p_DateFin ALORS
+      				
+      				// Récupère le rectangle de l'événement
+      				si m_taRectangles[pclEvt.UID] <> null alors
+      										
+      					stRectEvt = m_taRectangles[pclEvt.UID]
+      					
+      					si m_taRectanglesComplet[pclEvt.UID] <> null alors
+      						stRectCmp = m_taRectanglesComplet[pclEvt.UID]
+      					sinon
+      						stRectCmp = stRectEvt
+      					fin
+      					
+      					SI stRectCmp.x2 < stRectCmp.x1 ALORS
+      						stRectCmp.x1 <=> stRectCmp.x2
+      					FIN
+      					
+      					SI stRectCmp.y2 < stRectCmp.y1 ALORS
+      						stRectCmp.y1 <=> stRectCmp.y2
+      					FIN					
+      						
+      					// Détermine si les deux rectangles se superposent
+      					// -> même position verticale ?
+      					si stRectEvt.y1 - HAUTEUR_ELT * 2 <= stRect.y1 <= stRectEvt.y1 + HAUTEUR_ELT * 2 alors
+      						
+      						// -> l'un de bords du rectangle se trouve dans l'intervalle du rectangle courant ?
+      						si (stRectEvt.x1 - HAUTEUR_ELT * 2 <= stRect.x1 <= stRectEvt.x2 + HAUTEUR_ELT * 2 _ou_ stRectEvt.x1 - HAUTEUR_ELT * 2 <= stRect.x2 <= stRectEvt.x2 + HAUTEUR_ELT * 2) _ou_
+      							(stRectCmp.x1 - HAUTEUR_ELT * 2 <= stRect.x1 <= stRectCmp.x2 + HAUTEUR_ELT * 2 _OU_ stRectCmp.x1 - HAUTEUR_ELT * 2 <= stRect.x2 <= stRectCmp.x2 + HAUTEUR_ELT * 2)  ALORS
+      							
+      							renvoyer vrai
+      						FIN
+      					fin
+      				fin
+      			fin
+      		FIN
+      	FIN
+      	
+      renvoyer faux
+     type : 458752
+   -
+     name : ListeEvénements
+     procedure_id : 1952238386098644161
+     type_code : 12
+     code : |1-
+      // Résumé : Récupère les événements affichables entre deux dates
+      // Syntaxe :
+      //[ <Résultat> = ] ListeEvénements (<dhDébut> est DateHeure, <dhFin> est DateHeure)
+      //
+      // Paramètres :
+      //	dhDébut (DateHeure) : Début
+      //	dhFin (DateHeure) : Fin
+      // Valeur de retour :
+      // 	tableau :  Liste des événements compris entre les deux dates
+      //
+      Procédure PRIVEE ListeEvénements(local dhDébut est une DateHeure, local dhFin est une DateHeure)
+      
+      	tabEvt est un tableau de TimelineEvénement dynamique
+      	pclEvt est un TimelineEvénement dynamique
+      	
+      	// Parcourt les événements
+      	pour tout pclEvt de m_tabEvénements
+      		
+      		// Si l'événement se trouve dans les bornes
+      		si pclEvt.p_DateDébut < dhFin _ou_ (pclEvt.p_DateFin > dhDébut _et_ pclEvt.p_DateDébut < dhFin) ALORS
+      			
+      			// Conserve l'événement pour l'affichage
+      			ajoute(tabEvt, pclEvt)						
+      		FIN
+      	FIN	
+      	
+      renvoyer tabEvt
+     type : 458752
+   -
+     name : PositionVersDate
+     procedure_id : 1952238386098709743
+     type_code : 12
+     code : |1-
+      // Résumé : Convertit une position (indice ou réelle) en une DateHeure
+      // Syntaxe :
+      //[ <Résultat> = ] PositionVersDate (<rPosition> est réel [, <bPrécise> est booléen])
+      //
+      // Paramètres :
+      //	rPosition (réel) : Position donnée (indice ou position en pixels)
+      //	bPrécise (booléen - valeur par défaut=0) : Vrai si la position est une position en pixels, Faux si la position est un indice
+      // Valeur de retour :
+      // 	dateheure :  DateHeure correspondante
+      //
+      Procédure PositionVersDate(local rPosition est un réel, local bPrécise est un booléen = faux)
+      
+      	dhDateHeure		est une dateheure
+      	dhDébut			est une dateheure
+      	rNbSecondes		est un reel
+      	nNbSecondes		est un entier sans signe sur 8
+      	duDurée			est une duree
+      	
+      	// Calcul précis (rPosition est une position en pixels)
+      	si bPrécise alors
+      	
+      		dhDébut		= m_dhDateHeureMinAjustée
+      		
+      		// Date de départ
+      		dhDateHeure = dhDébut
+      		
+      		// Calcule le nombre de secondes entre la date de départ de la timeline et la position actuelle
+      		rNbSecondes = rPosition / LargeurSeconde(*, *, dhDébut..PartieDate)
+      
+      		// On caste la durée en entier			
+      		nNbSecondes = rNbSecondes
+      						
+      		// On affecte la durée avec le nombre de secondes * 1000 (données en millisecondes)
+      		// (Voir documentation du type Durée : Si une variable de type durée est manipulée grâce à un entier, cet entier correspond au nombre de millisecondes de la durée.)
+      		duDurée = nNbSecondes * 1000
+      		
+      		// Ajoute la durée calculée
+      		dhDateHeure += duDurée
+      		
+      		renvoyer dhDateHeure
+      	sinon
+      	
+      		dhDébut		= m_dhDateHeureMin
+      	
+      		// En fonction du zoom
+      		selon p_Zoom
+      			
+      			cas zoomDécades
+      				
+      				dhDateHeure = dhDébut
+      				
+      				// Précision à 1 mois
+      				dhDateHeure..Mois 		= 1
+      				dhDateHeure..Jour 		= 1
+      				dhDateHeure..heure 		= 0
+      				dhDateHeure..Minute 	= 0
+      				dhDateHeure..Seconde 	= 0
+      				
+      				// Incrémente simplement la décade en fonction de la position (index)
+      				dhDateHeure..Année += rPosition * 10
+      				dhDateHeure..Année -= modulo(dhDateHeure..Année, 10)				
+      				
+      			cas zoomAnnées
+      				
+      				dhDateHeure = dhDébut
+      				
+      				// Précision à 1 jour
+      				dhDateHeure..Mois 		= 1
+      				dhDateHeure..Jour 		= 1
+      				dhDateHeure..Heure 		= 0
+      				dhDateHeure..Minute 	= 0
+      				dhDateHeure..Seconde 	= 0
+      				
+      				// Incrémente simplement l'année en fonction de la position (index)
+      				dhDateHeure..Année += rPosition
+      				
+      			cas zoomMois
+      				
+      				dhDateHeure = dhDébut
+      				
+      				// Précision à 1 jour
+      				dhDateHeure..Jour  		= 1
+      				dhDateHeure..Heure 		= 0
+      				dhDateHeure..Minute 	= 0
+      				dhDateHeure..Seconde 	= 0
+      				
+      				// Incrémente simplement le mois en fonction de la position (index)
+      				dhDateHeure..Mois += rPosition
+      				
+      			cas zoomJours
+      				
+      				dhDateHeure = dhDébut
+      				
+      				// Précision à 1 heure
+      				dhDateHeure..Heure 		= 0
+      				dhDateHeure..Minute 	= 0
+      				dhDateHeure..Seconde 	= 0
+      				
+      				// Incrémente simplement le jour en fonction de la position (index)
+      				dhDateHeure..Jour += rPosition
+      				
+      			CAS zoomHeures
+      				
+      				dhDateHeure = dhDébut
+      				
+      				// Précision à 1 minute
+      				dhDateHeure..Minute 	= 0
+      				dhDateHeure..Seconde 	= 0
+      				
+      				// Incrémente simplement l'heure en fonction de la position (index)
+      				dhDateHeure..Heure += rPosition	
+      				
+      							
+      			cas zoomMinutes10
+      				
+      				dhDateHeure = dhDébut
+      				
+      				// Précision à une seconde
+      				dhDateHeure..Seconde 	= 0
+      				
+      				// Incrémente simplement la dizaine de minutes en fonction de la position (index)
+      				dhDateHeure..Minute += rPosition * 10
+      				dhDateHeure..Minute -= modulo(dhDateHeure..Minute, 10)
+      				
+      			cas zoomMinutes
+      				
+      				dhDateHeure = dhDébut
+      				
+      				// Précision à une seconde
+      				dhDateHeure..Seconde 	= 0
+      				
+      				// Incrémente simplement la minute en fonction de la position (index)
+      				dhDateHeure..Minute += rPosition
+      		FIN
+      	fin
+      	
+      renvoyer dhDateHeure
+     type : 458752
+   -
+     name : SurRouletteSouris
+     procedure_id : 1952281108147497025
+     type_code : 12
+     group : 4
+     code : |1-
+      // Résumé : Gestion de l'événement WM_MOUSEWHEEL
+      // Syntaxe :
+      // SurRouletteSouris ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure PRIVÉE SurRouletteSouris()
+      
+      	nSx, nSy sont des entiers
+      	
+      	// Coordonnées de la souris
+      	nSx = poidsfaible(_eve.lparam) - fenintposx
+      	nSy = poidsfort(_eve.lparam) - fenintposy
+      		
+      	// Détermine si la roulette a eu lieu sur le champ
+      	si pas {m_schamp, indchamp}..x <= nSx <= {m_sChamp, indChamp}..X + {m_sChamp, indChamp}..largeur ALORS retour
+      	SI pas {m_sChamp, indChamp}..y <= nSy <= {m_sChamp, indChamp}..y + {m_sChamp, indChamp}..hauteur ALORS retour
+      
+      	nSensRoulette est un entier = PoidsFort(_eve.wparam) / 120
+      	
+      	// Butées
+      	si nSensRoulette < -6 alors nSensRoulette = -6
+      	si nSensRoulette > 6  alors nSensRoulette = 6
+      	
+      	nDéplacement  est un entier = (nSensRoulette * m_nLargeurIntervalles)
+      		
+      	DéplaceTimeline(nDéplacement)
+     type : 458752
+   -
+     name : SynchroniseDécalage
+     procedure_id : 1952299129822866894
+     type_code : 12
+     code : |1-
+      // Résumé : Synchronise le décalage de la timeline (utilisée principalement pour synchroniser deux timelines)
+      // Syntaxe :
+      //SynchroniseDécalage (<rDécalage> est réel [, <dhDateHeureRéférence> est dateheure])
+      //
+      // Paramètres :
+      //	rDécalage (réel) : Décalage en secondes à appliquer
+      //	dhDateHeureRéférence (dateheure) : DateHeure de référence pour le décalage (par défaut : la plus petite DateHeure affichable)
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure SynchroniseDécalage(local rDécalage est un réel, local dhDateHeureRéférence est une dateheure = m_dhDateHeureMinRéel)	
+      	
+      	SI m_bDéplacementAutoAutorisé ALORS
+      	
+      		// Calcule le nombre de pixels à décaler
+      		rDécalageSynchro est un reel = rDécalage * LargeurSeconde(*, *, dhDateHeureRéférence..partiedate)
+      		
+      		// Applique le décalage
+      		p_Décalage += rDécalageSynchro		
+      	fin
+     type : 458752
+   -
+     name : LargeurSeconde
+     procedure_id : 1952555023984199294
+     type_code : 12
+     code : |1-
+      // Résumé : Calcule la représentation en pixels d'une seconde dans le zoom courant à partir d'une date de référence
+      // Syntaxe :
+      //[ <Résultat> = ] LargeurSeconde ( [<nZoom> est entier [, <nLargeurElt> est entier [, <dDateAnnée> est date]]])
+      //
+      // Paramètres :
+      //	nZoom (entier) : Zoom (par défaut : zoom actuel)
+      //	nLargeurElt (entier) : Largeur des intervalles entre chaque éléments (par défaut : largeur actuelle)
+      //	dDateAnnée (date) : Date de référence
+      // Valeur de retour :
+      // 	réel :       Largeur en pixels d'une seconde
+      //
+      Procédure privee LargeurSeconde(local nZoom est un entier = m_nZoom, local nLargeurElt est un entier = m_nLargeurIntervalles, local dDateAnnée est une date = m_dhDateHeureMinRéel..partiedate)
+      
+      	rDistanceOriginale est un réel
+      	dDateDébutAnnée	   est une date = dDateAnnée
+      	dDateFinAnnée	   est une date = dDateAnnée
+      	duDuréeAnnée	   est une duree
+      	nNbSecondesAnnée   est un entier sans signe // Par défaut : = 3600 * 24 * 31 * 12 
+      	nNbSecondesMois	   est un entier sans signe // Par défaut : = 3600 * 24 * 31
+      	nNbSecondesJour	   est un entier sans signe = 3600 * 24
+      	
+      	// Premier jour de l'année
+      	dDateDébutAnnée..mois = 1
+      	dDateDébutAnnée..jour = 1
+      	
+      	// Dernier jour de l'année	
+      	dDateFinAnnée..Mois = 12
+      	dDateFinAnnée..Jour = 31
+      	
+      	// Calcule la durée de l'année
+      	duDuréeAnnée = dDateFinAnnée - dDateDébutAnnée
+      	
+      	// Détermine le nombre de secondes qu'il y a dans cette année ...
+      	nNbSecondesAnnée = duDuréeAnnée..EnSecondes
+      	
+      	// ... et en moyenne pour un mois
+      	nNbSecondesMois = nNbSecondesAnnée / 12
+      		
+      	// Calcule la distance en pixel nécessaire pour se déplacer d'une seconde en fonction du zoom
+      	SELON nZoom
+      		CAS zoomDécades		: rDistanceOriginale = (nLargeurElt  		/ nNbSecondesAnnée / 10) 
+      		CAS zoomAnnées		: rDistanceOriginale = (nLargeurElt 		/ nNbSecondesAnnée) 
+      		CAS zoomMois		: rDistanceOriginale = (nLargeurElt 		/ nNbSecondesMois) 
+      		CAS zoomJours		: rDistanceOriginale = (nLargeurElt 		/ nNbSecondesJour) 
+      		CAS zoomHeures		: rDistanceOriginale = (nLargeurElt 		/ 3600) 
+      		CAS zoomMinutes10	: rDistanceOriginale = ((nLargeurElt / 10) 	/ 60) 
+      		CAS zoomMinutes		: rDistanceOriginale = (nLargeurElt 		/ 60) 
+      	FIN
+      	
+      renvoyer rDistanceOriginale
+     type : 458752
+   -
+     name : DateAjuste
+     procedure_id : 1953720102582656006
+     type_code : 12
+     code : |1-
+      // Résumé : Ajuste une date en fonction du zoom
+      // Syntaxe :
+      //DateAjuste (<dhDateHeure> est dateheure)
+      //
+      // Paramètres :
+      //	dhDateHeure (dateheure) : DateHeure à ajuster
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure privee DateAjuste(dhDateHeure est une dateheure)
+      
+      	// Ajuste la date min en fonction du zoom
+      	SELON p_Zoom
+      		
+      		// Décades : précision à la dizaine d'années près
+      		CAS zoomDécades
+      			dhDateHeure..Année -= modulo(dhDateHeure..Année, 10)			
+      			dhDateHeure..Mois  = 1
+      			dhDateHeure..Jour  = 1
+      			dhDateHeure..Heure  = 0
+      			dhDateHeure..Minute = 0
+      			dhDateHeure..Seconde = 0
+      			
+      		// Années : précision à l'année près
+      		CAS zoomAnnées
+      			dhDateHeure..Mois  = 1
+      			dhDateHeure..Jour  = 1
+      			dhDateHeure..Heure  = 0
+      			dhDateHeure..Minute = 0
+      			dhDateHeure..Seconde = 0
+      			
+      		// Mois : précision au mois près
+      		CAS zoomMois
+      			dhDateHeure..Jour  = 1
+      			dhDateHeure..Heure = 0		
+      			dhDateHeure..Minute = 0
+      			dhDateHeure..Seconde = 0	
+      			
+      		// Jours : précision au jour près
+      		CAS zoomJours
+      			dhDateHeure..Heure  = 0
+      			dhDateHeure..Minute = 0
+      			dhDateHeure..Seconde = 0
+      			
+      		// Heures : précision à l'heure près
+      		CAS zoomHeures
+      			dhDateHeure..Minute  = 0
+      			dhDateHeure..Seconde = 0
+      			
+      		// 10x minutes : précision à la dizaine de minutes près
+      		CAS zoomMinutes10
+      			dhDateHeure..Minute  -= modulo(dhDateHeure..Minute, 10)
+      			dhDateHeure..Seconde = 0			
+      			
+      		// Minutes : précision à la minute près
+      		CAS zoomMinutes			
+      			dhDateHeure..Seconde = 0
+      	FIN
+     type : 458752
+   -
+     name : SurDoubleClic
+     procedure_id : 1953741349821879659
+     type_code : 12
+     group : 4
+     code : |1-
+      // Résumé : Gestion de l'événement WM_LBUTTONDBLCLK et WM_RBUTTONDBLCLK
+      // Syntaxe :
+      // SurDoubleClic ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure privee SurDoubleClic()
+      
+      	// Déclenche d'abord un survol
+      	SurSurvol()
+      
+      	// Pas d'événement survolé	
+      	si m_pclEvénementSurvolé = null alors
+      		
+      		AnimationPrépare(ParentObjet(m_sChamp))
+      
+      		// Double clic 'gauche'
+      		si _eve.wMessage = WM_LBUTTONDBLCLK alors	
+      			
+      			// Augmente le zoom
+      			p_ZoomDistance = min(4, p_ZoomDistance + 0.5)
+      		
+      		// Double clic 'droit'
+      		sinon
+      			
+      			// Réduit le zoom
+      			p_ZoomDistance = Max(0.5, p_ZoomDistance - 0.5)
+      		fin
+      		
+      		// Renvoie le zoom sur la timeline parente
+      		si m_pclTimelineParente <> null ALORS
+      			m_pclTimelineParente.p_ZoomDistance = p_ZoomDistance
+      		FIN
+      		
+      		animationjoue(animFondu)
+      		
+      	sinon
+      	
+      		// Si une callback a été spécifiée
+      		si p_Callback <> "" alors
+      			
+      			quand exception dans
+      				// Appel de la callback
+      				ExécuteTraitement(p_Callback, trtProcédure, m_pclEvénementSurvolé)
+      			faire
+      			fin
+      		FIN
+      	fin
+     type : 458752
+   -
+     name : LargeurIntervalle
+     procedure_id : 1954049157202615559
+     type_code : 12
+     code : |1-
+      // Résumé : Renvoie la largeur d'un intervalle
+      // Syntaxe :
+      //[ <Résultat> = ] LargeurIntervalle ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	entier : Largeur d'un intervalle de date
+      //
+      Procédure LargeurIntervalle()
+      renvoyer m_nLargeurIntervalles
+     type : 458752
+   -
+     name : IntervallePrécédent
+     procedure_id : 1954050441400626454
+     type_code : 12
+     code : |1-
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //IntervallePrécédent ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure IntervallePrécédent()
+      
+      	SI m_pclTimelineSynchronisée <> Null ALORS
+      		m_pclTimelineSynchronisée.DéplaceTimeline(m_pclTimelineSynchronisée.LargeurIntervalle())
+      	SINON
+      		DéplaceTimeline(LargeurIntervalle())
+      	FIN
+     type : 458752
+   -
+     name : IntervalleSuivant
+     procedure_id : 1954050772113185997
+     type_code : 12
+     code : |1-
+      // Résumé : <indiquez ici ce que fait la procédure>
+      // Syntaxe :
+      //IntervalleSuivant ()
+      //
+      // Paramètres :
+      //	Aucun
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure IntervalleSuivant()
+      
+      	si m_pclTimelineSynchronisée <> Null ALORS
+      		m_pclTimelineSynchronisée.DéplaceTimeline(-m_pclTimelineSynchronisée.LargeurIntervalle())
+      	sinon
+      		DéplaceTimeline(-LargeurIntervalle())
+      	FIN
+     type : 458752
+   -
+     name : DéplaceTimeline
+     procedure_id : 1954051132890653206
+     type_code : 12
+     code : |1-
+      // Résumé : Déplace la timeline
+      // Syntaxe :
+      //DéplaceTimeline (<nDéplacement> est réel [, <nPas> est entier])
+      //
+      // Paramètres :
+      //	nDéplacement (réel) : Total du déplacement en pixels
+      //	nPas (entier) : Pas de déplacement
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure DéplaceTimeline(local nDéplacement est un reel, local nPas est un entier = selon(m_nzoom, 5, 6, 4, 6, 6, 6, 6))
+      
+      	m_rDécalagePrécédent = p_Décalage
+      	nDéplacement = nDéplacement / nPas
+      	
+      	si nDéplacement <> 0 alors
+      	
+      		BOUCLE (nPas)
+      			
+      			// Récupère la position actuelle
+      			nNouvellePos est un entier = p_Décalage
+      			
+      			// Calcule la nouvelle position
+      			nNouvellePos += nDéplacement
+      			
+      			// Si la nouvelle position fait que le bord droit du champ se retrouve
+      			// en deçà de la largeur du modèle, on recalcule la position pour que le champ
+      			// soit positionné correctement
+      			SI nNouvellePos + m_nLargeurMax <= m_nLargeurTimeLine ALORS		
+      				
+      				// On doit rester à droite
+      				nNouvellePos -= m_nLargeurMax - m_nLargeurTimeLine
+      				SORTIR
+      				
+      				// Si la nouvelle position fait que le bord gauche du champ se retrouve
+      				// au delà de 0 (bord gauche du modèle), on recalcule la position pour que le champ
+      				// soit positionné correctement
+      			SINON SI nNouvellePos >= 0 ALORS
+      				
+      				// On doit rester à gauche
+      				nNouvellePos = 0
+      				SORTIR
+      				
+      			FIN
+      			
+      			// Si la nouvelle position est différente de la précédente
+      			SI m_rDécalage <> nNouvellePos ALORS
+      				
+      				// Conserve la nouvelle position
+      				p_Décalage = nNouvellePos			
+      			FIN
+      		FIN
+      		
+      		// Conserve la nouvelle position
+      		p_Décalage = m_rDécalagePrécédent + nDéplacement * nPas	
+      	fin		
+      	
+      	// Actualise la timeline
+      	Affiche()
+      	
+      	// Rafraichissement
+      	Temporisation(0, tempoDessin)	
+     type : 458752
+   -
+     name : AllerA
+     procedure_id : 1954053057036253038
+     type_code : 12
+     code : |1-
+      // Résumé : Se positionner à une date donnée
+      // Syntaxe :
+      //AllerA (<dhDateHeure> est dateheure)
+      //
+      // Paramètres :
+      //	dhDateHeure (dateheure) : Nouvelle position
+      // Valeur de retour :
+      // 	Aucune
+      //
+      Procédure AllerA(local dhDateHeure est une dateheure)
+      
+      	rDéplacement est un réel
+      	rOffset est un reel
+      		
+      	// On ne peut pas sélectionner une date supérieure à la date maximale
+      	SI dhDateHeure > p_DateHeureMax ALORS
+      		dhDateHeure = p_DateHeureMax
+      		rOffset     = SELON(m_nZoom, 10, 12, 31, 24, 60, 60, 60)
+      		rOffset     = (rOffset - 1) * LargeurIntervalle()
+      		
+      		// On ne peut pas sélectionner une date inférieure à la date minimale
+      	SINON SI dhDateHeure < p_DateHeureMin ALORS
+      		dhDateHeure = p_DateHeureMin
+      	FIN
+      
+      	si m_pclTimelineSynchronisée <> Null ALORS
+      		
+      		// Calcule le déplacement à effectuer
+      		rDéplacement = m_pclTimelineSynchronisée.DateVersPosition(dhDateHeure, Vrai) - rOffset
+      		
+      		// Détermine le déplacement à effectuer
+      		rDéplacement = -(m_pclTimelineSynchronisée.p_Décalage + rDéplacement)
+      		
+      		m_pclTimelineSynchronisée.DéplaceTimeline(rDéplacement)
+      		
+      	sinon
+      		
+      		// Calcule le déplacement à effectuer
+      		rDéplacement = dateversposition(dhDateHeure, vrai) - rOffset
+      		DéplaceTimeline(p_Décalage + rDéplacement)
+      		
+      	FIN
+     type : 458752
+  properties :
+   -
+     name : p_DateHeureMin
+     identifier : 0x1b17bf77005a88f7
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_DateHeureMin()
+         renvoyer m_dhDateHeureMin
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_DateHeureMin(dhDate est une dateheure)
+         
+         	// Conserve la date
+         	si dhDate <> m_dhDateHeureMin alors
+         		m_dhDateHeureMin = dhDate
+         		
+         		SI m_pclTimelineParente = Null ALORS
+         			
+         			// Actualise
+         			Affiche()
+         		FIN
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_DateHeureMax
+     identifier : 0x1b17bf8f005be559
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_DateHeureMax()
+         renvoyer m_dhDateHeureMax
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_DateHeureMax(dhDate est une dateheure)
+         
+         	// Conserve la date
+         	si dhDate <> m_dhDateHeureMax alors
+         		m_dhDateHeureMax = dhDate
+         		
+         		si m_pclTimelineParente = null alors
+         		
+         			// Actualise
+         			affiche()
+         		fin
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Evénements
+     identifier : 0x1b17bfa8005c47a4
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Evénements()
+         renvoyer m_tabEvénements
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Evénements(tabEvénements est un tableau de * TimelineEvénement dynamique)
+         
+         	// Conserve les événements
+         	tableaucopie(tabEvénements, m_tabEvénements)
+         		
+         	SI m_pclTimelineParente = Null ALORS
+         		
+         		// Actualise
+         		Affiche()
+         	FIN
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Zoom
+     identifier : 0x1b17bfc2005dad87
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Zoom()
+         renvoyer m_nzoom
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Zoom(nZoom est un entier)
+         
+         	si 1 <= nZoom <= 7 alors
+         
+         		// Conserve le zoom
+         		si nZoom <> m_nzoom alors
+         			m_nZoom = nZoom	
+         			
+         			SI m_pclTimelineParente = Null ALORS
+         				
+         				// Actualise
+         				Affiche()
+         			FIN
+         		fin
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Décalage
+     identifier : 0x1b17ed4000f46036
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Décalage()
+         renvoyer m_rDécalage
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Décalage(rDécalage est un réel)
+         	
+         	rDiff est un réel
+         	
+         	// Bornes
+         	rDécalage = min(rDécalage, 0)
+         	
+         	// Si le déplacement automatique est autorisé
+         	si m_bDéplacementAutoAutorisé alors
+         				
+         		// Si le décalage est différent
+         		si m_rDécalage <> rDécalage alors
+         			
+         			// Calcule le déplacement
+         			rDiff = rDécalage - m_rDécalage
+         
+         			// Calcule le nombre de secondes déplacées
+         			rDiff = rDiff / LargeurSeconde(*, *, m_dhDateHeureMinRéel..PartieDate)
+         			
+         			// Conserve le décalage			
+         			m_rDécalage = rDécalage
+         	
+         			// Affiche
+         			Affiche()
+         						
+         			// Empêche la timeline synchronisée de modifier le décalage
+         			m_bDéplacementAutoAutorisé = faux
+         						
+         			// Si une autre timeline est synchronisée
+         			si m_pclTimelineSynchronisée <> null ALORS
+         				
+         				// Synchronise le décalage avec cette timeline
+         				m_pclTimelineSynchronisée.SynchroniseDécalage(rDiff, m_dhDateHeureMinRéel)
+         			FIN		
+         			
+         			si m_pclTimelineParente <> null alors
+         								
+         				// Synchronise le décalage avec la timeline parent
+         				m_pclTimelineParente.SynchroniseDécalage(rDiff, m_dhDateHeureMinRéel)				
+         			FIN
+         			
+         			// Ré-autorise la timeline synchronisée de modifier le décalage
+         			m_bDéplacementAutoAutorisé = vrai
+         		fin
+         	
+         		Temporisation(0, tempoDessin)
+         	fin	
+        type : 2031616
+     template_refs : []
+   -
+     name : p_TimelineSynchronisée
+     identifier : 0x1b17f5eb00663b68
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_TimelineSynchronisée()
+         renvoyer m_pclTimelineSynchronisée
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_TimelineSynchronisée(pclTimeline est une timeline dynamique)
+         
+         	// Annule la parenté avec la timeline précédente
+         	si pclTimeline = null _et_ m_pclTimelineSynchronisée <> null ALORS
+         		m_pclTimelineSynchronisée.p_TimelineParente = null
+         	FIN
+         
+         	// Conserve la nouvelle timeline
+         	m_pclTimelineSynchronisée = pclTimeline
+         	
+         	si pclTimeline <> null alors
+         		
+         		// Décrit la parenté
+         		m_pclTimelineSynchronisée.p_TimelineParente = objet
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_TimelineParente
+     identifier : 0x1b190a54015beacf
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_TimelineParente()
+         renvoyer m_pclTimelineParente
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_TimelineParente(pclTimeline est une timeline dynamique)
+         m_pclTimelineParente = pclTimeline
+        type : 2031616
+     template_refs : []
+   -
+     name : p_DateHeureSelect
+     identifier : 0x1b1d003200f33ca8
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_DateHeureSelect()
+         renvoyer m_dhDateHeureSelect
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_DateHeureSelect(local dhDate est une dateheure)
+         
+         	// Conserve la DateHeure
+         	si dhDate <> m_dhDateHeureSelect alors
+         		
+         		// On ne peut pas sélectionner une date supérieure à la date maximale
+         		si dhDate > p_DateHeureMax alors
+         			dhDate = p_DateHeureMax
+         			
+         		// On ne peut pas sélectionner une date inférieure à la date minimale
+         		sinon si dhDate < p_DateHeureMin alors
+         			dhDate = p_DateHeureMin
+         		FIN
+         		
+         		m_dhDateHeureSelect = dhDate
+         		
+         		SI m_pclTimelineParente = Null ALORS
+         			
+         			// Actualise
+         			Affiche()
+         		FIN
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Etat
+     identifier : 0x1b1d035a00fc9034
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Etat()
+         renvoyer (m_bDéplacementAutorisé ? actif sinon inactif)
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Etat(nEtat est un entier)
+         
+         	si (nEtat = Actif) <> m_bDéplacementAutorisé alors
+         
+         		// Seul l'état Actif permet le déplacement
+         		m_bDéplacementAutorisé = (nEtat = actif)
+         		
+         		// Actualise l'affichage
+         		Affiche()	
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Couleur
+     identifier : 0x1b1d0c83017058df
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Couleur()
+         renvoyer m_ncouleur
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Couleur(nCouleur est un entier)
+         
+         	si nCouleur <> m_nCouleur alors
+         		m_nCouleur = nCouleur
+         		
+         		// Actualise l'affichage
+         		si m_pclTimelineParente = null ALORS
+         			affiche()
+         		FIN
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_CouleurFond
+     identifier : 0x1b1d0ca50171dc22
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_CouleurFond()
+         renvoyer m_nCouleurFond
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_CouleurFond(nCouleur est un entier)
+         
+         	si nCouleur <> m_nCouleurFond alors
+         		m_nCouleurFond = nCouleur
+         		
+         		// Actualise l'affichage
+         		SI m_pclTimelineParente = Null ALORS
+         			Affiche()
+         		FIN
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_CouleurSélection
+     identifier : 0x1b1d0efd01b204b8
+     type_code : 103
+     p_codes :
+      -
+        internal_properties : CAAAAAgAAACN1sGc5uSoy8oJQ/0VxngZudrvgPpTaEj8CGGmo/2c9/uXvANFNUjo+9hVUwOdsseMhcFaw+ucgOj3KQJUjY8nNzV5Krr+MxyX+J9Z+P/FB0dC2yrhFkVjrcAUm1TpwyZsS80ib+UfiLqHWoVCx2E+loXIROIl9bIFuAtb4CltR5mmNSFcxUpKFSHXWBVKOn7MOmeOIBUNyzwKR60d3UAfYjW+75PDelWTKi9hJTVf2nXJZGiMV6vNmoo7R1c9Z05vepZ5zylTwzpmqn4B/cMddAXBlpXaiVcbIcaqaJ38ON6GIJAtBVPytMf4890jSHqTNNnBOKIThuXugRVDUHBh4KtwZw==
+        code : |1-
+         Procédure p_CouleurSélection()
+         renvoyer m_nCouleurSélection
+        type : 1966080
+      -
+        internal_properties : CAAAAAgAAACN1sGc5uSoy8oJQ/0VxngZudrvgPpTaEj8CGGmo/2c9/uXvANFNUjo+9hVUwOdsseMhcFaw+ucgOj3KQJUjY8nNzV5Krr+MxyX+J9Z+P/FB0dC2yrhFkVjrcAUm1TpwyZsS80ib+UfiLqHWoVCx2E+loXIROIl9bIFuAtb4CltR5mmNSFcxUpKFSHXWBVKOn7MOmeOIBUNyzwKR60d3UAfYjW+75PDelWTKi9hJTVf2nXJZGiMV6vNmoo7R1c9Z05vepZ5zylTwzpmqn4B/cMddAXBlpXaiVcbIcaqaJ38ON6GIJAtBVPytMf4890jSHqTNNnBOKIThuXugRVDUHBh4KtwZw==
+        code : |1-
+         Procédure p_CouleurSélection(nCouleur est un entier)
+         m_nCouleurSélection = nCouleur
+         
+         // Actualise l'affichage
+         SI m_pclTimelineParente = Null ALORS
+         	Affiche()
+         FIN
+        type : 2031616
+     template_refs : []
+   -
+     name : p_ZoomDistance
+     identifier : 0x1b1d158a03219a62
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_ZoomDistance()
+         renvoyer m_rZoomDist
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_ZoomDistance(rZoom est un reel)
+         
+         	si rZoom <> m_rZoomDist alors
+         		m_rZoomDist = rZoom
+         		
+         		// Actualise
+         		si m_pclTimelineParente = null ALORS
+         			affiche()
+         		FIN
+         	fin
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Police
+     identifier : 0x1b1d19270349b755
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Police()
+         renvoyer m_polPolice
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Police(polPolice)
+         
+         	m_polPolice = polPolice
+         	
+         	// Actualise
+         	si m_pclTimelineParente = null ALORS
+         		affiche()
+         	FIN	
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Callback
+     identifier : 0x1b1e265f005b56a5
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Callback()
+         renvoyer m_sCallbackClic
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Callback(sCallback est une chaine)
+         m_sCallbackClic = sCallback
+        type : 2031616
+     template_refs : []
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : CClasse1
+resources :
+ string_res :
+  identifier : 0x1148abc50c04c7ef
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ

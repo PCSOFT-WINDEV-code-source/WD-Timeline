@@ -1,0 +1,84 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : WD Timeline
+ major_version : 28
+ minor_version : 0
+ type : 4097
+ description : Le projet a pour but de ...
+ subtype : 0
+project :
+ identifier : 0x0
+ internal_properties : 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
+ configurations :
+  -
+    name : WD Timeline
+    internal_properties : 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
+    configuration_id : 14402594908260372672
+    type : 1
+    generation_name : WD Timeline.exe
+    version :
+     version : 1.00Ag
+    icon_filename : .\temps.ico
+    language : 1
+    new_features_help :
+     name : ""
+     internal_properties : CAAAAAgAAACfa7wmzY4vQ5untlc4HpdUt1UmdYgLB7LBqxMBWiI9O13ERdzdVVDizxRPQaZ0D72nV6n8fC4IGmKQnA==
+ elements :
+  identifier : 0x4c766fb401622d88
+  elements :
+   -
+     name : FEN_Exemple
+     identifier : 0x4b17f2880000fed6
+     internal_properties : CAAAAAgAAAAFAW2xjiuDnKsSik2qEbgpueSAQHYZ0geaUwzn0SByrlrmG5XiIE7N9C6oEJBAOKgQEA==
+     physical_name : .\FEN_Exemple.wdw
+     type : 2
+   -
+     name : TEST_Exemple
+     identifier : 0x4c766fd90171bc8d
+     internal_properties : CAAAAAgAAADTLwsfrJmRShXQtItw0AZrByRSGq75DhdeTpUWNusj9Qc54FAk5ggHMuzWIuIe2s42Pg==
+     physical_name : .\TEST_Exemple.wxt
+     type : 17
+  other_elements : []
+  net_assemblies : []
+  uwp_api : []
+  external_components : []
+  internal_components :
+   -
+     physical_name : .\WD Timeline\WD Timeline.wci
+ report_and_queries_enabled : false
+ common_generation_directory : true
+ languages :
+  - fr-FR
+ code_elements :
+  internal_properties : CAAAAAgAAAAKIOajFq/1lnfjt8XqvvShTNow/R3hXvv6C3HTdQYsdSY9Jmkyigo6fhu/OcfzIcDn9OavwMm2r4P0VYFQz560FKUIqqcZZdERrkDgOlkpkv7+7i3z7A==
+  type_code : 0
+  p_codes :
+   -
+     code : |1-
+      
+     type : 196608
+   -
+     type : 196621
+   -
+     type : 196627
+     enabled : false
+  orphans :
+   -
+     name : WD Timeline
+     identifier : 0x4c766fb501652e33
+     code_elements :
+      type_code : 159
+      p_codes : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+rad :
+ internal_properties : CAAAAAgAAABhIL0UXeZmxDJxY3Xy0Q==
+project_explorer :
+ explorer_type : project
+resources :
+ string_res :
+  identifier : 0x0
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAAAd98VSJfHHqE3P0QHwrwdhn7ig8dWBR6valpUTgnAMTVXiDg==

@@ -1,0 +1,180 @@
+#To edit and compare internal_properties, use WINDEV integrated tools.
+#Internal properties refer to the properties of controls in windows, reports, etc.
+info :
+ name : TimelineEvénement
+ major_version : 28
+ minor_version : 0
+ type : 4
+ description : ""
+ subtype : 0
+class :
+ identifier : 0x1b1672020017ffef
+ internal_properties : CAAAAAgAAAB2/vstTMCJbS/hlxjFxirSqKvCUuv8YxgpWyl7S3iA
+ code_elements :
+  type_code : 10
+  p_codes :
+   -
+     code : |1-
+      TimelineEvénement est une classe
+      
+      	prive
+      		m_sID			est une chaine						// Identifiant de l'événement
+      		m_sTitre		est une chaine						// Titre de l'événement
+      		m_sDescription	est une chaine						// Description de l'événement
+      		m_dhDateDébut	est une dateheure					// Date de début de l'événement
+      		m_dhDateFin		est une dateheure					// Date de fin de l'événement
+      		m_nCouleur		est un entier		= grisclair		// Couleur de l'événement		
+      		m_sInfoEtendue	est une chaine						// Infos étendues (données personnelles)
+      		
+      	public constant
+      		UID				est une chaine
+      		m_duDurée		est une duree
+      
+      Fin
+     type : 131072
+  procedures :
+   -
+     name : Constructeur
+     procedure_id : 1951872841428828143
+     type_code : 27
+     code : |1-
+      Procédure Constructeur()
+      
+      	// Construction d'un UID
+      	UID = "TMLEV" + NumériqueVersChaîne(DonneIdentifiant, "08X")
+      	m_dhDateFin = "00000000000000000"
+     type : 589824
+   -
+     name : Destructeur
+     procedure_id : 1951872841428893679
+     type_code : 28
+     code : |1-
+      Procédure Destructeur()
+     type : 655360
+  properties :
+   -
+     name : p_ID
+     identifier : 0x1b1672eb001b8c85
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_ID()
+         renvoyer m_sid
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_ID(sID est une chaine)
+         m_sID = sID
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Titre
+     identifier : 0x1b1672fb001ccacc
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Titre()
+         renvoyer m_stitre
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Titre(sTitre est une chaine)
+         m_sTitre = sTitre
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Description
+     identifier : 0x1b167310001d1ed5
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Description()
+         renvoyer m_sDescription
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Description(sDescription est une chaine)
+         m_sDescription = sDescription
+        type : 2031616
+     template_refs : []
+   -
+     name : p_DateDébut
+     identifier : 0x1b16732e001e90f8
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_DateDébut()
+         renvoyer m_dhDateDébut
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_DateDébut(dhDate est une dateheure)
+         m_dhDateDébut = dhDate
+         si pas datevalide(m_dhDateFin) alors m_dhDateFin = m_dhDateDébut
+         m_duDurée     = m_dhDateFin - m_dhDateDébut
+        type : 2031616
+     template_refs : []
+   -
+     name : p_DateFin
+     identifier : 0x1b167347001ff5a3
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_DateFin()
+         renvoyer m_dhDateFin
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_DateFin(dhDate est une dateheure)
+         m_dhDateFin = dhDate
+         m_duDurée     = m_dhDateFin - m_dhDateDébut
+        type : 2031616
+     template_refs : []
+   -
+     name : p_Couleur
+     identifier : 0x1b1673650020693d
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_Couleur()
+         renvoyer m_nCouleur
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_Couleur(nCouleur est un entier)
+         m_nCouleur = nCouleur
+        type : 2031616
+     template_refs : []
+   -
+     name : p_InfoEtendues
+     identifier : 0x1b1e26d8005f2e4d
+     type_code : 103
+     p_codes :
+      -
+        code : |1-
+         Procédure p_InfoEtendues()
+         renvoyer m_sInfoEtendue
+        type : 1966080
+      -
+        code : |1-
+         Procédure p_InfoEtendues(sInfoEtendues est une chaine)
+         m_sInfoEtendue = sInfoEtendues
+        type : 2031616
+     template_refs : []
+  procedure_templates : []
+  property_templates : []
+ code_parameters :
+  internal_properties : CAAAAAgAAACVGQgYbalU7DKC3oH4ItDrjtcTHXXV/EuH8q0IbhyQlw==
+  original_name : CClasse1
+resources :
+ string_res :
+  identifier : 0x1148abc50bf9c7e0
+  internal_properties : CAAAAAgAAACm76HWfKGWp33VjXInA4cRlqArlgTTA862QGt72W2ld5Y=
+custom_note :
+ internal_properties : CAAAAAgAAABtB9HWVzrXO2+4NDRVK0vmzaNKrCKqH1DBX30lMmGZ
